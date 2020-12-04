@@ -4,6 +4,9 @@
             <h1 class="text-center my-10">Projects Lab</h1>
             <VCol cols="12">
                 <VCard class="px-4 pt-8 py-2 rounded-0">
+                    <VCol cols="12">
+                        <p class="error-block" v-if="errorMsg">{{ errorMsg }}</p>
+                    </VCol>
                     <p class="card-title text-center">Sign In to ProjectsLab</p>
                     <VCol cols="12">
                         <VTextField
@@ -51,6 +54,8 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
+import * as actions from '../../store/modules/auth/types/actions';
 import { validationMixin } from 'vuelidate';
 import {
     required,
@@ -72,16 +77,22 @@ export default {
         userData: {
             email: '',
             password: ''
-        }
+        },
+        errorMsg: ''
     }),
     methods: {
+        ...mapActions('auth', {
+            signIn: actions.SIGN_IN
+        }),
         async onLogin() {
             this.$v.$touch();
             if (!this.$v.$invalid) {
                 try {
                     console.log(this.userData);
+                    await this.signIn(this.userData);
                     this.userData.email = this.userData.password = '';
                 } catch (error) {
+                    this.errorMsg = error;
                     console.log(error);
                 }
             }

@@ -3,3 +3,10 @@
     font-size: 18px;
     color: #515651;
 }
+
+.error-block {
+    background: #ff144f;
+    color: #f0f0f0;
+    padding: 10px;
+    border-radius: 5px;
+}
