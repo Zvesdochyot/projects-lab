@@ -1,14 +1,23 @@
-import requestService from "./requestService";
+import requestService from "../requestService";
 
 const API_PREFIX = '/auth';
 
 export default {
-    setToken() {},
-    removeToken() {},
-    hasToken() {},
+    setToken(token) {
+        localStorage.setItem('auth_access_token', token);
+    },
+    removeToken() {
+        localStorage.removeItem('auth_access_token');
+    },
+    hasToken() {
+        return !!localStorage.getItem('auth_access_token');
+    },
+    getToken() {
+        return localStorage.getItem('auth_access_token');
+    },
     async signIn(signInData) {
         const response = await requestService.post(API_PREFIX + '/login', signInData);
-        console.log(response);
+        this.setToken(response?.data?.accessToken);
         return response;
     },
     async signUp(signUpData) {

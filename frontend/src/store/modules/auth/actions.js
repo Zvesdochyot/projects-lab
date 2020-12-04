@@ -1,7 +1,7 @@
 import * as actions from './types/actions';
 import * as mutations from './types/mutations';
-import authService from "../../../services/authService";
-import userService from "../../../services/userService";
+import authService from "../../../services/auth/authService";
+import userService from "../../../services/user/userService";
 
 export default {
     [actions.SIGN_IN]: async ({ commit }, signInData) => {

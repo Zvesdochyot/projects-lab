@@ -10,3 +10,10 @@
     padding: 10px;
     border-radius: 5px;
 }
+
+.success-block {
+    background: #399911;
+    color: #f0f0f0;
+    padding: 10px;
+    border-radius: 5px;
+}

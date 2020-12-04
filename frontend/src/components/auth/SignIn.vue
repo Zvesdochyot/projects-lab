@@ -4,7 +4,7 @@
             <h1 class="text-center my-10">Projects Lab</h1>
             <VCol cols="12">
                 <VCard class="px-4 pt-8 py-2 rounded-0">
-                    <VCol cols="12">
+                    <VCol cols="12" v-if="errorMsg">
                         <p class="error-block" v-if="errorMsg">{{ errorMsg }}</p>
                     </VCol>
                     <p class="card-title text-center">Sign In to ProjectsLab</p>
@@ -88,8 +88,8 @@ export default {
             this.$v.$touch();
             if (!this.$v.$invalid) {
                 try {
-                    console.log(this.userData);
                     await this.signIn(this.userData);
+                    this.$v.$reset();
                     this.userData.email = this.userData.password = '';
                 } catch (error) {
                     this.errorMsg = error;

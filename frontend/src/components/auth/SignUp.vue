@@ -4,6 +4,16 @@
             <h1 class="text-center my-10">Projects Lab</h1>
             <VCol cols="12">
                 <VCard class="px-4 pt-8 py-2 rounded-0">
+                    <VCol cols="12" v-if="errorMsg || successMsg">
+                        <p class="error-block" v-if="errorMsg">{{ errorMsg }}</p>
+                        <p class="success-block" v-if="successMsg">
+                            {{ successMsg }}
+                            <RouterLink :to="{ name: 'sign-in' }">
+                                <span class="white--text text-decoration-underline">Sign In!</span>
+                            </RouterLink>
+                        </p>
+                    </VCol>
+
                     <p class="card-title text-center">Sign Up to ProjectsLab</p>
                     <VCol cols="12" class="py-0 my-0">
                         <VTextField
@@ -14,7 +24,16 @@
                                 v-model="userData.name"
                         />
                     </VCol>
-
+                    <VCol cols="12" class="py-0 my-0">
+                        <VTextField
+                                outlined
+                                label="Nickname"
+                                append-icon="mdi-account"
+                                aria-autocomplete="none"
+                                :error-messages="nicknameErrors"
+                                v-model="userData.nickname"
+                        />
+                    </VCol>
                     <VCol cols="12" class="py-0 my-0">
                         <VTextField
                                 outlined
@@ -73,6 +92,8 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
+import * as actions from '../../store/modules/auth/types/actions';
 import { validationMixin } from 'vuelidate';
 import {
     required,
@@ -87,6 +108,7 @@ export default {
     validations: {
         userData: {
             name: { required, minLength: minLength(2) },
+            nickname: { required, minLength: minLength(2) },
             email: { required, email },
             password: { required, minLength: minLength(8) },
             passwordConfirmation: { sameAs: sameAs('password') }
@@ -95,24 +117,40 @@ export default {
     data: () => ({
         showPassword: false,
         showConfirmPassword: false,
+        errorMsg: '',
+        successMsg: '',
         userData: {
             name: '',
+            nickname: '',
             email: '',
             password: '',
             passwordConfirmation: ''
         }
     }),
     methods: {
+        ...mapActions('auth', {
+            signUp: actions.SIGN_UP
+        }),
         async onRegister() {
+            this.errorMsg = this.successMsg = '';
             this.$v.$touch();
             if (!this.$v.$invalid) {
                 try {
-                    console.log(this.userData);
+                    await this.signUp({
+                        name: this.userData.name,
+                        nickname: this.userData.nickname,
+                        email: this.userData.email,
+                        password: this.userData.password,
+                        password_confirmation: this.userData.passwordConfirmation,
+                    });
+                    this.$v.$reset();
                     Object.keys(this.userData).forEach(key => {
                         this.userData[key] = '';
                     });
+                    this.errorMsg = '';
+                    this.successMsg = 'You was successfully registered!';
                 } catch (error) {
-                    console.log(error);
+                    this.errorMsg = error;
                 }
             }
         }
@@ -127,6 +165,17 @@ export default {
                 errors.push('Name is required!');
             !this.$v.userData.name.minLength &&
                 errors.push('Name must be more than 2 characters!');
+            return errors;
+        },
+        nicknameErrors() {
+            const errors = [];
+            if (!this.$v.userData.nickname.$dirty) {
+                return errors;
+            }
+            !this.$v.userData.nickname.required &&
+            errors.push('Nickname is required!');
+            !this.$v.userData.nickname.minLength &&
+            errors.push('Nickname must be more than 2 characters!');
             return errors;
         },
         emailErrors() {
