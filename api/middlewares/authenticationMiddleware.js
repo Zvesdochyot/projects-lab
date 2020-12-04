@@ -6,7 +6,6 @@ const jwt = require('jsonwebtoken');
 const jwtConfig = require('../config/jwt.config');
 
 module.exports = (req, res, next) => {
-    // Authorization: Bearer <access_token>
     const authorizationHeader = req.header('Authorization');
 
     if (!authorizationHeader) res.status(HTTP_UNAUTHORIZED).json("Unauthorized!");

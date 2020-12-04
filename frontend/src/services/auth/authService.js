@@ -25,6 +25,8 @@ export default {
         return response?.data;
     },
     async signOut() {
-        return await requestService.post(API_PREFIX + '/logout');
+        const response = await requestService.post(API_PREFIX + '/logout');
+        this.removeToken();
+        return response;
     },
 }

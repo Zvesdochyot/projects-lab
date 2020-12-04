@@ -3,7 +3,8 @@ const { JWT_SECRET } = require('../config/jwt.config');
 const User = require('../models/User');
 const {
     HTTP_BAD_REQUEST,
-    HTTP_NOT_FOUND
+    HTTP_NOT_FOUND,
+    HTTP_OK
 } = require('../constants/httpCodes');
 const bcrypt = require('bcryptjs');
 
@@ -23,7 +24,7 @@ exports.login = async (req, res) => {
     const token = jwt.sign(
         { user },
         JWT_SECRET,
-        { expiresIn: 60 });
+        { expiresIn: 60 * 60 });
 
     res.json({
         accessToken: token
@@ -63,5 +64,6 @@ exports.register = async (req, res) => {
 };
 
 exports.logout = async (req, res) => {
-    res.send('logout');
+    req.user = null;
+    res.status(HTTP_OK).json('Logged out!');
 };

@@ -91,6 +91,7 @@ export default {
                     await this.signIn(this.userData);
                     this.$v.$reset();
                     this.userData.email = this.userData.password = '';
+                    this.$router.push({ name: 'dashboard' });
                 } catch (error) {
                     this.errorMsg = error;
                     console.log(error);
