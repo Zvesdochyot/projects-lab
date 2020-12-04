@@ -13,8 +13,7 @@ export default {
     },
     async signUp(signUpData) {
         const response = await requestService.post(API_PREFIX + '/register', signUpData);
-        console.log(response);
-        return response;
+        return response?.data;
     },
     async signOut() {
         return await requestService.post(API_PREFIX + '/logout');

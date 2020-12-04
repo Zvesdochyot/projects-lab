@@ -1,35 +1,32 @@
-const express = require("express");
+const express = require('express');
 const app = express();
 const router = express.Router();
 const mongoose = require('mongoose');
+const cors = require('cors');
 
-const port = process.env.PORT || 3333;
+const corsOptions = {
+    origin: 'http://localhost:8080'
+};
 
-const authRoutes = require('./routes/authRoutes');
-const userRoutes = require('./routes/userRoutes');
-const projectRoutes = require('./routes/projectRoutes');
+const authMiddleware = require('./middlewares/authenticationMiddleware');
 
-router.use('/auth', authRoutes);
-router.use('/users', userRoutes);
-router.use('/projects', projectRoutes);
+router.use('/auth', require('./routes/authRoutes'));
+router.use('/users', authMiddleware, require('./routes/userRoutes'));
+router.use('/projects', require('./routes/projectRoutes'));
 
-const mongoDbUrl = require('./config/mongodb');
-
+app.use(cors(corsOptions));
 app.use(express.json());
+
 app.use('/api/v1', router);
 
-async function start() {
+(async () => {
     try {
-        await mongoose.connect(mongoDbUrl, {
+        await mongoose.connect(require('./config/mongodb'), {
             useNewUrlParser: true,
             useFindAndModify: false
         });
-        app.listen(port);
+        app.listen(process.env.PORT || 3333);
     } catch (e) {
-        console.log(error);
+        console.log(e);
     }
-
-}
-
-
-start();
+})();
