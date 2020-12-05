@@ -1,41 +1,57 @@
-const { Schema, model } = require('mongoose');
+const Sequilize = require('sequelize');
 
-module.exports = model(
-    'User',
-    new Schema({
-        name: {
-            type: String,
-            required: true
+const Model = Sequilize.Model;
+class User extends Model {}
+User.init(
+    {
+        id: {
+            type: Sequilize.INTEGER,
+            primaryKey: true,
+            autoIncrement: true
         },
-        password: {
-            type: String,
-            required: true,
-            minlength: 8
+        name: {
+            type: Sequilize.STRING,
+            allowNull: false
         },
         email: {
-            type: String,
-            required: true,
+            type: Sequilize.STRING,
+            allowNull: false,
             unique: true
         },
         nickname: {
-            type: String,
-            required: true,
+            type: Sequilize.STRING,
+            allowNull: false,
             unique: true
         },
         avatar: {
-            type: String,
-            required: false,
-            default: null
+            type: Sequilize.STRING,
+            allowNull: true
+        },
+        password: {
+            type: Sequilize.STRING,
+            allowNull: false,
+        },
+        email_verified_at: {
+            type: Sequilize.DATE,
+            allowNull: true
         },
         createdAt: {
-            type: Date,
-            required: false,
-            default: null
+            type: Sequilize.DATE,
+            allowNull: false,
+            defaultValue: Date.now()
         },
         updatedAt: {
-            type: Date,
-            required: false,
+            type: Sequilize.DATE,
+            allowNull: true,
             default: null
         }
-    })
+    },
+    {
+        sequelize: require('../database/connection'),
+        modelName: 'user',
+        tableName: 'users',
+        timestamps: false
+    }
 );
+
+module.exports = User;

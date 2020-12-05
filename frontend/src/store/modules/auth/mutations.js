@@ -6,7 +6,6 @@ export default {
         state.user = null;
     },
     [mutations.SET_LOGGED_USER]: (state, user) => {
-        console.log(user);
         state.user = userMapper(user);
     }
 }

@@ -15,6 +15,13 @@ axios.interceptors.request.use(
     error => Promise.reject(error)
 );
 
+axios.interceptors.response.use(
+    success => Promise.resolve(success),
+    error => {
+        return Promise.reject(error?.response?.data);
+    }
+);
+
 export default {
     get(url, params = {}, headers = {}) {
         return axios.get(

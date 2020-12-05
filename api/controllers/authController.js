@@ -4,12 +4,12 @@ const User = require('../models/User');
 const {
     HTTP_BAD_REQUEST,
     HTTP_NOT_FOUND,
-    HTTP_OK
+    HTTP_NO_CONTENT
 } = require('../constants/httpCodes');
 const bcrypt = require('bcryptjs');
 
 exports.login = async (req, res) => {
-    const user = await User.findOne({ email: req.body.email });
+    const user = await User.findOne({ where: { email: req.body.email }});
 
     if (!user) {
         res.status(HTTP_NOT_FOUND).send('User with such email not found!');
@@ -24,7 +24,7 @@ exports.login = async (req, res) => {
     const token = jwt.sign(
         { user },
         JWT_SECRET,
-        { expiresIn: 60 * 60 });
+        { expiresIn: 60 * 60 * 24 });
 
     res.json({
         accessToken: token
@@ -32,14 +32,14 @@ exports.login = async (req, res) => {
 };
 
 exports.register = async (req, res) => {
-    let user = await User.findOne({ email: req.body.email });
+    let user = await User.findOne({ where: { email: req.body.email }});
 
     if (user) {
         res.status(HTTP_BAD_REQUEST).json('User with such email already exists!');
         return;
     }
 
-    user = await User.findOne({ nickname: req.body.nickname });
+    user = await User.findOne({ where: { nickname: req.body.nickname }});
 
     if (user) {
         res.status(HTTP_BAD_REQUEST).json('User with such nickname already exists!');
@@ -52,11 +52,13 @@ exports.register = async (req, res) => {
     }
 
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
-    user = new User({
+    user = User.build({
         name: req.body.name,
         email: req.body.email,
         nickname: req.body.nickname,
         password: hashedPassword,
+        createdAt: Date.now(),
+        updatedAt: null
     });
     await user.save();
 
@@ -65,5 +67,5 @@ exports.register = async (req, res) => {
 
 exports.logout = async (req, res) => {
     req.user = null;
-    res.status(HTTP_OK).json('Logged out!');
+    res.status(HTTP_NO_CONTENT).json('Logged out!');
 };

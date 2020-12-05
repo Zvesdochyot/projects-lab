@@ -6,7 +6,7 @@
 
 <script>
 import Dashboard from "../components/dashboard/Dashboard";
-import MainLayout from "../components/common/MainLayout";
+import MainLayout from "../components/common/layout/MainLayout";
 export default {
     name: "DashboardPage",
     components: {

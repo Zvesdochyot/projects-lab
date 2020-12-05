@@ -4,11 +4,11 @@ const {
 } = require('../constants/httpCodes');
 
 exports.getLoggedUser = async (req, res) => {
-    console.log(req);
+    console.log(req.user);
     res.status(HTTP_OK).json(req.user);
 };
 
 exports.getAllUsers = async (req, res) => {
-    const users = await User.find();
-    res.send(users);
+    const users = await User.findAll();
+    return res.status(HTTP_OK).json(users);
 };

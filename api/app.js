@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const router = express.Router();
-const mongoose = require('mongoose');
+const connection = require('./database/connection');
 const cors = require('cors');
 
 const corsOptions = {
@@ -21,12 +21,9 @@ app.use('/api/v1', router);
 
 (async () => {
     try {
-        await mongoose.connect(require('./config/mongodb'), {
-            useNewUrlParser: true,
-            useFindAndModify: false
-        });
+        await connection.authenticate();
         app.listen(process.env.PORT || 3333);
     } catch (e) {
-        console.log(e);
+         console.log(e);
     }
 })();
