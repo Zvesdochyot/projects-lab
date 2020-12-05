@@ -13,8 +13,8 @@
                         <Avatar />
                     </VListItemAvatar>
                     <VListItemContent>
-                        <VListItemTitle>Dmitriy Uvin</VListItemTitle>
-                        <VListItemSubtitle>@dmitriyuvin</VListItemSubtitle>
+                        <VListItemTitle>{{ name }}</VListItemTitle>
+                        <VListItemSubtitle>@{{ nickname }}</VListItemSubtitle>
                     </VListItemContent>
                 </VListItem>
 
@@ -42,9 +42,12 @@
 import { mapActions } from 'vuex';
 import * as actions from "../../../store/modules/auth/types/actions";
 import Avatar from "./Avatar";
+import userMixin from "../../../mixins/userMixin";
+import authService from "../../../services/auth/authService";
 
 export default {
     name: "UserDropdown",
+    mixins: [userMixin],
     components: {
         Avatar
     },
@@ -53,7 +56,8 @@ export default {
             signOut: actions.SIGN_OUT
         }),
         async onLogOut() {
-            await this.signOut();
+            await authService.signOut();
+            this.signOut();
             this.$router.push({ name: 'main' });
         },
     }

@@ -16,7 +16,6 @@ export default {
         await authService.signUp(signUpData);
     },
     [actions.SIGN_OUT]: async ({ commit }) => {
-        await authService.signOut();
         commit(mutations.SIGN_OUT);
     }
 }

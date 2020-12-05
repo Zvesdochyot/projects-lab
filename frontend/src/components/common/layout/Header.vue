@@ -82,8 +82,10 @@
 
 <script>
 import UserDropdown from "./UserDropdown";
+import userMixin from "../../../mixins/userMixin";
 export default {
     name: "Header",
+    mixins: [userMixin],
     components: {
         UserDropdown
     },
