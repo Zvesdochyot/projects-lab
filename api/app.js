@@ -1,10 +1,11 @@
 const express = require('express');
 const app = express();
 const router = express.Router();
-const connection = require('./database/connection');
+const connection = require('./config/connection');
 const cors = require('cors');
 
 const corsOptions = {
+    // origin: 'https://projects-lab-client.herokuapp.com/'
     origin: 'http://localhost:8080'
 };
 
@@ -18,6 +19,10 @@ app.use(cors(corsOptions));
 app.use(express.json());
 
 app.use('/api/v1', router);
+
+app.get('/', (req, res) => {
+    res.send('Hello world!');
+});
 
 (async () => {
     try {

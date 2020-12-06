@@ -13,12 +13,14 @@ exports.login = async (req, res) => {
 
     if (!user) {
         res.status(HTTP_NOT_FOUND).send('User with such email not found!');
+        return;
     }
 
     const passwordsMatch = await bcrypt.compare(req.body.password, user.password);
 
     if (!passwordsMatch) {
-        res.status(HTTP_BAD_REQUEST).json('Wrong Password!');
+        res.status(HTTP_BAD_REQUEST).json('Wrong password!');
+        return;
     }
 
     const token = jwt.sign(

@@ -1,5 +1,5 @@
 const Sequilize = require('sequelize');
-const dbConfig = require('./config');
+const dbConfig = require('./database');
 
 module.exports = new Sequilize(
     dbConfig.DATABASE_NAME,
