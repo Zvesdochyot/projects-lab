@@ -1,12 +1,7 @@
 module.exports = {
-    DATABASE_NAME: 'projects_lab',
-    DATABASE_USERNAME: 'root',
-    DATABASE_PASSWORD: 'BMWE60onelove$',
-    DATABASE_HOST: 'localhost',
-    DATABASE_DRIVER: 'mysql',
-    // DATABASE_NAME: 'in1p0xkh5u9glkqu',
-    // DATABASE_USERNAME: 'hqe2bukxlx2regds',
-    // DATABASE_PASSWORD: 'dupjg8mmwia4s58b',
-    // DATABASE_HOST: 'pfw0ltdr46khxib3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
-    // DATABASE_DRIVER: 'mysql',
+    DATABASE_NAME: process.env.DATABASE_NAME,
+    DATABASE_USERNAME: process.env.DATABASE_USERNAME,
+    DATABASE_PASSWORD: process.env.DATABASE_PASSWORD,
+    DATABASE_HOST: process.env.DATABASE_HOST,
+    DATABASE_DRIVER: process.env.DATABASE_DRIVER
 };
