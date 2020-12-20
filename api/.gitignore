@@ -1,3 +1,7 @@
 .idea
 node_modules
 .env.local
+
+# App configuration
+./config/database.js
+./config/jwt.config.js
