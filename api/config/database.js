@@ -1,7 +1,7 @@
 module.exports = {
-    DATABASE_NAME: process.env.DATABASE_NAME,
-    DATABASE_USERNAME: process.env.DATABASE_USERNAME,
-    DATABASE_PASSWORD: process.env.DATABASE_PASSWORD,
-    DATABASE_HOST: process.env.DATABASE_HOST,
-    DATABASE_DRIVER: process.env.DATABASE_DRIVER
+    DATABASE_NAME: 'projects_lab',
+    DATABASE_USERNAME: 'root',
+    DATABASE_PASSWORD: 'BMWE60onelove$',
+    DATABASE_HOST: 'localhost',
+    DATABASE_DRIVER: 'mysql'
 };

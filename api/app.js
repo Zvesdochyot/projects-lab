@@ -5,7 +5,6 @@ const connection = require('./config/connection');
 const cors = require('cors');
 
 const corsOptions = {
-    // origin: 'https://projects-lab-client.herokuapp.com/'
     origin: 'http://localhost:8080'
 };
 
@@ -20,14 +19,13 @@ app.use(express.json());
 
 app.use('/api/v1', router);
 
-app.get('/', (req, res) => {
-    res.send('Hello world!');
-});
-
 (async () => {
     try {
         await connection.authenticate();
-        app.listen(process.env.PORT || 3333);
+        console.log('MySQL connected!');
+        app.listen(process.env.PORT || 3333, () => {
+            console.log('server started, port: ' + (process.env.PORT || 3333));
+        });
     } catch (e) {
          console.log(e);
     }

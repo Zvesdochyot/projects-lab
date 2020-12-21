@@ -26,7 +26,7 @@ exports.login = async (req, res) => {
     const token = jwt.sign(
         { user },
         JWT_SECRET,
-        { expiresIn: 60 * 60 * 24 });
+        { expiresIn: 60 * 60 });
 
     res.json({
         accessToken: token
@@ -37,20 +37,17 @@ exports.register = async (req, res) => {
     let user = await User.findOne({ where: { email: req.body.email }});
 
     if (user) {
-        res.status(HTTP_BAD_REQUEST).json('User with such email already exists!');
-        return;
+        return res.status(HTTP_BAD_REQUEST).json('User with such email already exists!');
     }
 
     user = await User.findOne({ where: { nickname: req.body.nickname }});
 
     if (user) {
-        res.status(HTTP_BAD_REQUEST).json('User with such nickname already exists!');
-        return;
+        return res.status(HTTP_BAD_REQUEST).json('User with such nickname already exists!');
     }
 
     if (req.body.password !== req.body.password_confirmation) {
-        res.status(HTTP_BAD_REQUEST).json("Passwords don't match!");
-        return;
+        return res.status(HTTP_BAD_REQUEST).json("Passwords don't match!");
     }
 
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
@@ -62,9 +59,10 @@ exports.register = async (req, res) => {
         createdAt: Date.now(),
         updatedAt: null
     });
+
     await user.save();
 
-    res.status(200).json('You successfully registered!');
+    return res.status(200).json('You successfully registered!');
 };
 
 exports.logout = async (req, res) => {
