@@ -1,32 +1,27 @@
 const jwt = require('jsonwebtoken');
 const { JWT_SECRET } = require('../config/jwt.config');
 const User = require('../models/User');
-const {
-    HTTP_BAD_REQUEST,
-    HTTP_NOT_FOUND,
-    HTTP_NO_CONTENT
-} = require('../constants/httpCodes');
 const bcrypt = require('bcryptjs');
 
 exports.login = async (req, res) => {
     const user = await User.findOne({ where: { email: req.body.email }});
 
     if (!user) {
-        res.status(HTTP_NOT_FOUND).send('User with such email not found!');
+        res.status(404).send('User with such email not found!');
         return;
     }
 
     const passwordsMatch = await bcrypt.compare(req.body.password, user.password);
 
     if (!passwordsMatch) {
-        res.status(HTTP_BAD_REQUEST).json('Wrong password!');
+        res.status(400).json('Wrong password!');
         return;
     }
 
     const token = jwt.sign(
         { user },
         JWT_SECRET,
-        { expiresIn: 60 * 60 });
+        { expiresIn: 3600 });
 
     res.json({
         accessToken: token
@@ -37,17 +32,17 @@ exports.register = async (req, res) => {
     let user = await User.findOne({ where: { email: req.body.email }});
 
     if (user) {
-        return res.status(HTTP_BAD_REQUEST).json('User with such email already exists!');
+        return res.status(400).json('User with such email already exists!');
     }
 
     user = await User.findOne({ where: { nickname: req.body.nickname }});
 
     if (user) {
-        return res.status(HTTP_BAD_REQUEST).json('User with such nickname already exists!');
+        return res.status(400).json('User with such nickname already exists!');
     }
 
     if (req.body.password !== req.body.password_confirmation) {
-        return res.status(HTTP_BAD_REQUEST).json("Passwords don't match!");
+        return res.status(400).json("Passwords don't match!");
     }
 
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
@@ -67,5 +62,5 @@ exports.register = async (req, res) => {
 
 exports.logout = async (req, res) => {
     req.user = null;
-    res.status(HTTP_NO_CONTENT).json('Logged out!');
+    res.status(204).json('Logged out!');
 };

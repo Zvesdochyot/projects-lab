@@ -1,5 +1,6 @@
 import axios from 'axios';
-import authService from "./auth/authService";
+import authService from './auth/authService';
+import router from '../router';
 
 const API_ENDPOINT = process.env.VUE_APP_API_URL;
 
@@ -18,7 +19,11 @@ axios.interceptors.request.use(
 axios.interceptors.response.use(
     success => Promise.resolve(success),
     error => {
-        return Promise.reject(error?.response?.data);
+        if (error?.response?.data?.code === 'unauthorized') {
+            authService.removeToken();
+            router.push({ name: 'sign-in' });
+        }
+        return Promise.reject(error);
     }
 );
 

@@ -1,14 +1,14 @@
 const express = require('express');
 const app = express();
 const router = express.Router();
-const connection = require('./config/connection');
+const dbConnection = require('./config/connection');
 const cors = require('cors');
 
 const corsOptions = {
     origin: 'http://localhost:8080'
 };
 
-const authMiddleware = require('./middlewares/authenticationMiddleware');
+const authMiddleware = require('./middlewares/authMiddleware');
 
 router.use('/auth', require('./routes/authRoutes'));
 router.use('/users', authMiddleware, require('./routes/userRoutes'));
@@ -21,7 +21,7 @@ app.use('/api/v1', router);
 
 (async () => {
     try {
-        await connection.authenticate();
+        await dbConnection.authenticate();
         console.log('MySQL connected!');
         app.listen(process.env.PORT || 3333, () => {
             console.log('server started, port: ' + (process.env.PORT || 3333));
