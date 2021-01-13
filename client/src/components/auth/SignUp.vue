@@ -1,6 +1,6 @@
 <template>
     <div class="d-flex justify-center align-center">
-        <VCol cols="12" md="4">
+        <VCol cols="12" md="3">
             <h1 class="text-center my-10">Projects Lab</h1>
             <VCol cols="12">
                 <VCard class="px-4 pt-8 py-2 rounded-0">
@@ -14,9 +14,10 @@
                         </p>
                     </VCol>
 
-                    <p class="card-title text-center">Sign Up to ProjectsLab</p>
+                    <p class="card-title text-center">Sign Up</p>
                     <VCol cols="12" class="py-0 my-0">
                         <VTextField
+                                dense
                                 outlined
                                 label="Name"
                                 aria-autocomplete="none"
@@ -26,6 +27,7 @@
                     </VCol>
                     <VCol cols="12" class="py-0 my-0">
                         <VTextField
+                                dense
                                 outlined
                                 label="Nickname"
                                 append-icon="mdi-account"
@@ -36,6 +38,7 @@
                     </VCol>
                     <VCol cols="12" class="py-0 my-0">
                         <VTextField
+                                dense
                                 outlined
                                 label="Email"
                                 append-icon="mdi-at"
@@ -46,6 +49,7 @@
                     </VCol>
                     <VCol cols="12" class="py-0 my-0">
                         <VTextField
+                                dense
                                 outlined
                                 label="Password"
                                 :type="showPassword ? 'text' : 'password'"
@@ -58,6 +62,7 @@
                     </VCol>
                     <VCol cols="12" class="py-0 my-0">
                         <VTextField
+                                dense
                                 outlined
                                 label="Repeat Password"
                                 :type="showConfirmPassword ? 'text' : 'password'"

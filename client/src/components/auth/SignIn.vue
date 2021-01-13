@@ -1,15 +1,16 @@
 <template>
     <div class="d-flex justify-center align-center">
-        <VCol cols="12" md="4">
+        <VCol cols="12" md="3">
             <h1 class="text-center my-10">Projects Lab</h1>
             <VCol cols="12">
                 <VCard class="px-4 pt-8 py-2 rounded-0">
                     <VCol cols="12" v-if="errorMsg">
                         <p class="error-block" v-if="errorMsg">{{ errorMsg }}</p>
                     </VCol>
-                    <p class="card-title text-center">Sign In to ProjectsLab</p>
+                    <p class="card-title text-center">Sign In</p>
                     <VCol cols="12">
                         <VTextField
+                                dense
                                 outlined
                                 label="Email"
                                 append-icon="mdi-at"
@@ -18,8 +19,9 @@
                                 v-model="userData.email"
                         />
                     </VCol>
-                    <VCol cols="12">
+                    <VCol cols="12" class="my-0 py-0">
                         <VTextField
+                                dense
                                 outlined
                                 label="Password"
                                 :type="showPassword ? 'text' : 'password'"
@@ -30,7 +32,7 @@
                                 aria-autocomplete="none"
                         />
                     </VCol>
-                    <VCol cols="12">
+                    <VCol cols="12" class="my-0 py-0">
                         <VBtn
                                 block
                                 depressed
