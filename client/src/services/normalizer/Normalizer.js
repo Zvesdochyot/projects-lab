@@ -4,3 +4,12 @@ export const userMapper = User => ({
     email: User.email,
     avatar: User.avatar,
 });
+
+export const projectMapper = Project => ({
+    id: Project.id,
+    name: Project.name,
+    description: Project.description,
+    createdAt: Project.createdAt,
+    updatedAt: Project.updatedAt,
+    dashboardOrder: Project.dashboardOrder
+});
