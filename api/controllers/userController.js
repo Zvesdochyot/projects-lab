@@ -1,7 +1,6 @@
 const User = require('../models/User');
 
 exports.getLoggedUser = async (req, res) => {
-    console.log(req.user);
     res.status(200).json(req.user);
 };
 
