@@ -20,17 +20,20 @@ Project.init(
         dashboardOrder: {
             type: Sequilize.INTEGER,
             allowNull: false,
-            default: 0
+            default: 0,
+            field: 'dashboard_order'
         },
         createdAt: {
             type: Sequilize.DATE,
             allowNull: false,
-            defaultValue: Date.now()
+            defaultValue: Date.now(),
+            field: 'created_at'
         },
         updatedAt: {
             type: Sequilize.DATE,
             allowNull: true,
-            default: null
+            default: null,
+            field: 'updated_at'
         }
     },
     {
