@@ -17,14 +17,16 @@ router.use('/projects', authMiddleware, require('./routes/projectRoutes'));
 app.use(cors(corsOptions));
 app.use(express.json());
 
+
 app.use('/api/v1', router);
 
 (async () => {
     try {
+        const PORT = process.env.PORT || 3333;
         await dbConnection.authenticate();
         console.log('MySQL connected!');
-        app.listen(process.env.PORT || 3333, () => {
-            console.log('server started, port: ' + (process.env.PORT || 3333));
+        app.listen(PORT, () => {
+            console.log(`server started, port: ${PORT}`);
         });
     } catch (e) {
          console.log(e);
