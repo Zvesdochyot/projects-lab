@@ -5,9 +5,20 @@ class Project extends Model {}
 Project.init(
     {
         id: {
-            type: Sequilize.INTEGER,
+            type: Sequilize.INTEGER.UNSIGNED,
             primaryKey: true,
-            autoIncrement: true
+            autoIncrement: true,
+            allowNull: false
+        },
+        userId: {
+            type: Sequilize.DataTypes.INTEGER.UNSIGNED,
+            allowNull: false,
+            field: 'author_id',
+            references: {
+                model: 'users',
+                key: 'id'
+            },
+            onDelete: 'CASCADE'
         },
         name: {
             type: Sequilize.STRING,
@@ -20,7 +31,6 @@ Project.init(
         dashboardOrder: {
             type: Sequilize.INTEGER,
             allowNull: false,
-            default: 0,
             field: 'dashboard_order'
         },
         createdAt: {
@@ -37,7 +47,7 @@ Project.init(
         }
     },
     {
-        sequelize: require('../config/connection'),
+        sequelize: require('../config/database/connection'),
         modelName: 'project',
         tableName: 'projects',
         timestamps: false

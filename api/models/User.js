@@ -31,23 +31,26 @@ User.init(
             type: Sequilize.STRING,
             allowNull: false,
         },
-        email_verified_at: {
+        emailVerifiedAt: {
             type: Sequilize.DATE,
-            allowNull: true
+            allowNull: true,
+            field: 'email_verified_at'
         },
         createdAt: {
             type: Sequilize.DATE,
             allowNull: false,
-            defaultValue: Date.now()
+            defaultValue: Date.now(),
+            field: 'created_at'
         },
         updatedAt: {
             type: Sequilize.DATE,
             allowNull: true,
-            default: null
+            default: null,
+            field: 'updated_at'
         }
     },
     {
-        sequelize: require('../config/connection'),
+        sequelize: require('../config/database/connection'),
         modelName: 'user',
         tableName: 'users',
         timestamps: false
