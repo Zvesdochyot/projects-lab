@@ -6,6 +6,7 @@ import UserDataProvider from '../components/guard/UserDataProvider';
 
 Vue.use(VueRouter);
 
+const prefix = process.env.VUE_APP_NAME + ' | ';
 const routes = [
     {
         component: UserDataProvider,
@@ -15,7 +16,7 @@ const routes = [
                 path: '/sign-in',
                 name: 'sign-in',
                 component: () => import('../views/SignInPage'),
-                meta: { guest: true }
+                meta: { guest: true, title: prefix + 'Sign In' }
             },
             {
                 path: '/sign-up',

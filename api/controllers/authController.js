@@ -23,7 +23,7 @@ exports.login = async (req, res) => {
         JWT_SECRET,
         { expiresIn: 3600 });
 
-    res.json({
+    res.status(200).json({
         accessToken: token
     });
 };
