@@ -43,12 +43,13 @@
                             Sign In
                         </VBtn>
                         <VDivider class="my-6" />
+                            <SocialAccountsLogin />
+                        <VDivider class="my-6" />
                         <div class="justify-md-space-between d-flex">
                             <RouterLink :to="{ name: 'sign-up' }">Don't have an account?</RouterLink>
                             <RouterLink :to="{ name: 'sign-up' }">Can't log?</RouterLink>
                         </div>
                     </VCol>
-
                 </VCard>
             </VCol>
         </VCol>
@@ -64,9 +65,13 @@ import {
     minLength,
     email
 } from 'vuelidate/lib/validators';
+import SocialAccountsLogin from './SocialAccountsLogin';
 
 export default {
     name: "SignIn",
+    components: {
+        SocialAccountsLogin
+    },
     mixins: [validationMixin],
     validations: {
         userData: {

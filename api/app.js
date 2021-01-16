@@ -12,14 +12,15 @@ const corsOptions = {
 const authMiddleware = require('./middlewares/authMiddleware');
 
 router.use('/auth', require('./routes/authRoutes'));
+router.use('/social/auth', require('./routes/socialAuthRoutes'));
 router.use('/users', authMiddleware, require('./routes/userRoutes'));
 router.use('/projects', authMiddleware, require('./routes/projectRoutes'));
 
 app.use(cors(corsOptions));
 app.use(express.json());
 
-
 app.use('/api/v1', router);
+
 
 (async () => {
     try {
