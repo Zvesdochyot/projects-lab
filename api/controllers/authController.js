@@ -1,5 +1,4 @@
 const jwt = require('jsonwebtoken');
-const { JWT_SECRET } = require('../config/jwt/jwt.config');
 const User = require('../models/User');
 const bcrypt = require('bcryptjs');
 
@@ -20,7 +19,7 @@ exports.login = async (req, res) => {
 
     const token = jwt.sign(
         { user },
-        JWT_SECRET,
+        process.env.JWT_SECRET,
         { expiresIn: 3600 });
 
     res.status(200).json({

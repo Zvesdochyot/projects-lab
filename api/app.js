@@ -4,6 +4,7 @@ const router = express.Router();
 const dbConnection = require('./config/database/connection');
 const cors = require('cors');
 
+
 const corsOptions = {
     origin: 'http://localhost:8080'
 };
@@ -25,8 +26,10 @@ app.use('/api/v1', router);
         const PORT = process.env.PORT || 3333;
         await dbConnection.authenticate();
         console.log('MySQL connected!');
+        require('./env')();
         app.listen(PORT, () => {
             console.log(`server started, port: ${PORT}`);
+            console.log('Environment variables are set!');
         });
     } catch (e) {
          console.log(e);
