@@ -3,7 +3,7 @@ const app = express();
 const router = express.Router();
 const dbConnection = require('./config/database/connection');
 const cors = require('cors');
-
+const passportSetup = require('./config/passport-setup');
 
 const corsOptions = {
     origin: 'http://localhost:8080'

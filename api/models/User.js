@@ -13,6 +13,26 @@ User.init(
             type: Sequilize.STRING,
             allowNull: false
         },
+        account_id: {
+            type: Sequilize.STRING,
+            unique: true,
+            allowNull: true,
+        },
+        access_token: {
+            type: Sequilize.TEXT,
+            unique: false,
+            allowNull: true,
+        },
+        refresh_token: {
+            type: Sequilize.TEXT,
+            unique: false,
+            allowNull: true,
+        },
+        provider: {
+            type: Sequilize.STRING,
+            unique: false,
+            allowNull: true
+        },
         email: {
             type: Sequilize.STRING,
             allowNull: false,

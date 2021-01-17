@@ -65,7 +65,7 @@ import {
     minLength,
     email
 } from 'vuelidate/lib/validators';
-import SocialAccountsLogin from './SocialAccountsLogin';
+import SocialAccountsLogin from './SocialAuth';
 
 export default {
     name: "SignIn",

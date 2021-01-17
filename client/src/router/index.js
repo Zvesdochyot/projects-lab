@@ -3,6 +3,7 @@ import VueRouter from 'vue-router';
 import authService from '../services/auth/authService';
 
 import UserDataProvider from '../components/guard/UserDataProvider';
+import SocialAuthCallback from "../components/auth/SocialAuthCallback";
 
 Vue.use(VueRouter);
 
@@ -37,6 +38,11 @@ const routes = [
                 meta: { guest: true }
             }
         ]
+    },
+    {
+        component: SocialAuthCallback,
+        name: 'social-auth',
+        path: '/social-auth/callback'
     }
 ];
 
