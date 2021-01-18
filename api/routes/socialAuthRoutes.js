@@ -10,4 +10,18 @@ router.get(
     socialAuthController.googleProviderCallback
 );
 
+router.get('/facebook', socialAuthController.facebookProvider);
+router.get(
+    '/facebook/callback',
+    passport.authenticate('facebook', { session: false }),
+    socialAuthController.facebookProviderCallback
+);
+
+router.get('/github', socialAuthController.githubProvider);
+router.get(
+    '/github/callback',
+    passport.authenticate('github', { session: false }),
+    socialAuthController.githubProviderCallback
+);
+
 module.exports = router;

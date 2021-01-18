@@ -4,9 +4,10 @@ const router = express.Router();
 const dbConnection = require('./config/database/connection');
 const cors = require('cors');
 const passportSetup = require('./config/passport-setup');
+const env = require('./env.js');
 
 const corsOptions = {
-    origin: 'http://localhost:8080'
+    origin: env.client.appUrl
 };
 
 const authMiddleware = require('./middlewares/authMiddleware');
@@ -24,13 +25,14 @@ app.use('/api/v1', router);
 
 (async () => {
     try {
-        const PORT = process.env.PORT || 3333;
+        console.log('Environment variables are set!');
+
+        const PORT = env.port || 3333;
         await dbConnection.authenticate();
         console.log('MySQL connected!');
-        require('./env')();
+
         app.listen(PORT, () => {
-            console.log(`server started, port: ${PORT}`);
-            console.log('Environment variables are set!');
+            console.log(`Server started, port: ${PORT}`);
         });
     } catch (e) {
          console.log(e);
