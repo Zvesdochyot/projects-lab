@@ -83,6 +83,7 @@
                         >
                             Sign Up
                         </VBtn>
+                        <SocialAccountsLogin />
                         <VDivider class="my-6" />
                         <div class="justify-md-space-between d-flex">
                             <RouterLink :to="{ name: 'sign-in' }">Already have an account?</RouterLink>
@@ -106,10 +107,14 @@ import {
     email,
     sameAs
 } from 'vuelidate/lib/validators';
+import SocialAccountsLogin from './SocialAuth';
 
 export default {
     name: "SignUp",
     mixins: [validationMixin],
+    components: {
+        SocialAccountsLogin
+    },
     validations: {
         userData: {
             name: { required, minLength: minLength(2) },

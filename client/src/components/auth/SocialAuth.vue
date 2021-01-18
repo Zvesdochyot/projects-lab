@@ -1,5 +1,6 @@
 <template>
     <div class="text-center">
+        <VDivider class="my-6" />
         <VRow class="justify-center">
             <img :src="require('../../assets/images/google-logo.png')"
                 class="mr-3 social-button"

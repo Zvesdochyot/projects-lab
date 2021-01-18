@@ -42,8 +42,7 @@
                         >
                             Sign In
                         </VBtn>
-                        <VDivider class="my-6" />
-                            <SocialAccountsLogin />
+                        <SocialAccountsLogin />
                         <VDivider class="my-6" />
                         <div class="justify-md-space-between d-flex">
                             <RouterLink :to="{ name: 'sign-up' }">Don't have an account?</RouterLink>
