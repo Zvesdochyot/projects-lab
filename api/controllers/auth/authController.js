@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken');
 const User = require('../../models/User');
 const bcrypt = require('bcryptjs');
+const mailer = require('../../mail/mailer');
 
 exports.login = async (req, res) => {
     const user = await User.findOne({ where: { email: req.body.email }});
@@ -55,6 +56,8 @@ exports.register = async (req, res) => {
     });
 
     await user.save();
+
+    mailer.sendRegisterMail(req.body.name, req.body.email);
 
     return res.status(200).json('You successfully registered!');
 };

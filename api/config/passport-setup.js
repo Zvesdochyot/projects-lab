@@ -4,6 +4,7 @@ const FacebookStrategy = require('passport-facebook');
 const GitHubStrategy = require('passport-github');
 const User = require('../models').User;
 const env = require('../env');
+const mailer = require('../mail/mailer');
 
 passport.use(
     new GoogleStrategy({
@@ -38,6 +39,7 @@ passport.use(
                 password: require('crypto').randomBytes(40).toString('hex')
             });
             await user.save();
+            mailer.sendRegisterMail(profile.displayName, profile.emails[0].value);
             return done(null, user);
         }
     })
@@ -77,6 +79,7 @@ passport.use(
                 password: require('crypto').randomBytes(40).toString('hex')
             });
             await user.save();
+            mailer.sendRegisterMail(profile.displayName, profile.emails[0].value);
             return done(null, user);
         }
     })
@@ -114,6 +117,7 @@ passport.use(
                 password: require('crypto').randomBytes(40).toString('hex')
             });
             await user.save();
+            mailer.sendRegisterMail(profile.displayName, profile.emails[0].value);
             return done(null, user);
         }
     })

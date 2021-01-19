@@ -23,5 +23,13 @@ module.exports = {
         clientID: '109f55e73c4c94b605d3',
         clientSecret: '51a7b4f4d53d99795c2f9c20f85b61df79ab46dc',
         callbackURL: '/api/v1/social/auth/github/callback'
+    },
+    mail: {
+        mailDriver: 'mailgun'
+    },
+    mailgun: {
+        apiKey: 'df0fce2acc1ec297cc5067d493b649b4-9b1bf5d3-d9180a66',
+        domain: 'api.sanders-cinema.fun',
+        emailFrom: 'support@projectslab.com'
     }
 };
