@@ -15,7 +15,6 @@ app.use(express.json());
 
 app.use('/api/v1', require('./routes'));
 
-
 (async () => {
     try {
         const PORT = process.env.port || 3333;
