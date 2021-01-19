@@ -65,6 +65,6 @@ exports.reindexProjectsForLoggedUser = async (req, res) => {
     project.dashboardOrder = newIndex;
     await project.save();
 
-    res.status(200);
+    res.status(204).json();
 };
 
