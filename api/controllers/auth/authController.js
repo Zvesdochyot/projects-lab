@@ -2,20 +2,19 @@ const jwt = require('jsonwebtoken');
 const User = require('../../models/User');
 const bcrypt = require('bcryptjs');
 const mailer = require('../../mail/mailer');
+const createError = require('http-errors');
 
-exports.login = async (req, res) => {
+exports.login = async (req, res, next) => {
     const user = await User.findOne({ where: { email: req.body.email }});
 
     if (!user) {
-        res.status(404).send('User with such email not found!');
-        return;
+        return next(createError(404, 'User with such email not found!'));
     }
 
     const passwordsMatch = await bcrypt.compare(req.body.password, user.password);
 
     if (!passwordsMatch) {
-        res.status(400).json('Wrong password!');
-        return;
+        return next(createError(400, 'Wrong password!'));
     }
 
     const token = jwt.sign(
@@ -28,21 +27,21 @@ exports.login = async (req, res) => {
     });
 };
 
-exports.register = async (req, res) => {
+exports.register = async (req, res, next) => {
     let user = await User.findOne({ where: { email: req.body.email }});
 
     if (user) {
-        return res.status(400).json('User with such email already exists!');
+        return next(createError(400, 'User with such email already exists!'));
     }
 
     user = await User.findOne({ where: { nickname: req.body.nickname }});
 
     if (user) {
-        return res.status(400).json('User with such nickname already exists!');
+        return next(createError(400, 'User with such nickname already exists!'));
     }
 
     if (req.body.password !== req.body.password_confirmation) {
-        return res.status(400).json("Passwords don't match!");
+        return next(createError(400, "Passwords don't match!"));
     }
 
     const hashedPassword = await bcrypt.hash(req.body.password, 10);

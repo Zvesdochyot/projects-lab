@@ -23,7 +23,7 @@ axios.interceptors.response.use(
             authService.removeToken();
             router.push({ name: 'sign-in' });
         }
-        return Promise.reject(error?.response?.data);
+        return Promise.reject(error?.response?.data?.message);
     }
 );
 
