@@ -70,7 +70,7 @@ User.init(
         }
     },
     {
-        sequelize: require('../config/database/connection'),
+        sequelize: require('../database/connection'),
         modelName: 'user',
         tableName: 'users',
         timestamps: false

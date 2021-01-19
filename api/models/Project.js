@@ -53,7 +53,7 @@ Project.init(
         }
     },
     {
-        sequelize: require('../config/database/connection'),
+        sequelize: require('../database/connection'),
         modelName: 'project',
         tableName: 'projects',
         timestamps: false
