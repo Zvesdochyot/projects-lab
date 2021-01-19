@@ -1,14 +1,12 @@
 const Sequilize = require('sequelize');
-const env = process.env.NODE_APP_ENV || 'development';
-const dbConfig = require('./database')[env];
 
 module.exports = new Sequilize(
-    dbConfig.database,
-    dbConfig.username,
-    dbConfig.password,
+    process.env.DATABASE_NAME,
+    process.env.DATABASE_USERNAME,
+    process.env.DATABASE_PASSWORD,
     {
-        host: dbConfig.host,
-        dialect: dbConfig.dialect,
-        logging: false
+        host: process.env.DATABASE_HOST,
+        dialect: process.env.DATABASE_DRIVER,
+        logging: process.env.DATABASE_LOGGING
     }
 );

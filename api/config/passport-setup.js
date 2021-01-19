@@ -3,14 +3,13 @@ const GoogleStrategy = require('passport-google-oauth20');
 const FacebookStrategy = require('passport-facebook');
 const GitHubStrategy = require('passport-github');
 const User = require('../models').User;
-const env = require('../env');
 const mailer = require('../mail/mailer');
 
 passport.use(
     new GoogleStrategy({
-        callbackURL: env.google.callbackURL,
-        clientID: env.google.clientID,
-        clientSecret: env.google.secretKey
+        callbackURL: process.env.GOOGLE_CALLBACK_URL,
+        clientID: process.env.GOOGLE_CLIENT_ID,
+        clientSecret: process.env.GOOGLE_SECRET_KEY
     },
     async (accessToken, refreshToken, profile, done) => {
         let user = await User.findOne({ where: { account_id: profile.id }});
@@ -47,9 +46,9 @@ passport.use(
 
 passport.use(
     new FacebookStrategy({
-        clientID: env.facebook.clientID,
-        clientSecret: env.facebook.secretKey,
-        callbackURL: env.facebook.callbackURL,
+        clientID: process.env.FACEBOOK_CLIENT_ID,
+        clientSecret: process.env.FACEBOOK_SECRET_KEY,
+        callbackURL: process.env.FACEBOOK_CALLBACK_URL,
         profileFields: ['id', 'displayName', 'email', 'name']
     },
     async (accessToken, refreshToken, profile, done) => {
@@ -87,8 +86,8 @@ passport.use(
 
 passport.use(
     new GitHubStrategy({
-        clientID: env.github.clientID,
-        clientSecret: env.github.clientSecret,
+        clientID: process.env.GITHUB_CLIENT_ID,
+        clientSecret: process.env.GITHUB_SECRET_KEY,
     },
     async (accessToken, refreshToken, profile, done) => {
         let user = await User.findOne({ where: { account_id: profile.id }});

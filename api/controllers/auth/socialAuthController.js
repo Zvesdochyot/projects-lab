@@ -1,6 +1,5 @@
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
-const env = require('../../env');
 
 exports.googleProvider = passport.authenticate('google', {
     scope: ['profile', 'email']
@@ -9,9 +8,9 @@ exports.googleProvider = passport.authenticate('google', {
 exports.googleProviderCallback = (req, res) => {
     const token = jwt.sign(
         { user: req.user },
-        env.jwt.secret,
+        process.env.JWT_SECRET_KEY,
         { expiresIn: 3600 });
-    res.redirect(env.client.appUrl + '/social-auth/callback?token=' + token);
+    res.redirect(process.env.CLIENT_APP_URL + '/social-auth/callback?token=' + token);
 };
 
 
@@ -22,9 +21,9 @@ exports.facebookProvider = passport.authenticate('facebook', {
 exports.facebookProviderCallback = (req, res) => {
     const token = jwt.sign(
         { user: req.user },
-        env.jwt.secret,
+        process.env.JWT_SECRET_KEY,
         { expiresIn: 3600 });
-    res.redirect(env.client.appUrl + '/social-auth/callback?token=' + token);
+    res.redirect(process.env.CLIENT_APP_URL + '/social-auth/callback?token=' + token);
 };
 
 exports.githubProvider = passport.authenticate('github', {
@@ -34,7 +33,7 @@ exports.githubProvider = passport.authenticate('github', {
 exports.githubProviderCallback = (req, res) => {
     const token = jwt.sign(
         { user: req.user },
-        env.jwt.secret,
+        process.env.JWT_SECRET_KEY,
         { expiresIn: 3600 });
-    res.redirect(env.client.appUrl + '/social-auth/callback?token=' + token);
+    res.redirect(process.env.CLIENT_APP_URL + '/social-auth/callback?token=' + token);
 };

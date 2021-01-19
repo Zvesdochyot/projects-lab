@@ -3,7 +3,6 @@ const mg = require("nodemailer-mailgun-transport");
 const handlebars = require("handlebars");
 const fs = require("fs");
 const path = require("path");
-const env = require('../env');
 
 
 class MailGunMailer {
@@ -12,7 +11,7 @@ class MailGunMailer {
         this.content = {};
         this.subject = '';
         this.to = [];
-        this.emailFrom = env.mailgun.emailFrom;
+        this.emailFrom = process.env.MAIL_FROM;
     }
     setSubject(subject) {
         this.subject = subject;
@@ -42,8 +41,8 @@ class MailGunMailer {
 
         const mailgunAuth = {
             auth: {
-                api_key: env.mailgun.apiKey,
-                domain: env.mailgun.domain
+                api_key: process.env.MAILGUN_API_KEY,
+                domain: process.env.MAILGUN_DOMAIN
             }
         };
 
@@ -54,7 +53,7 @@ class MailGunMailer {
         const htmlToSend = templateCompiled(this.content);
 
         const mailOptions = {
-            from: env.mailgun.emailFrom,
+            from: this.emailFrom,
             to: this.to,
             subject: this.subject,
             html: htmlToSend

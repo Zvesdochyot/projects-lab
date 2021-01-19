@@ -1,13 +1,13 @@
+require('dotenv').config({ path: './.env' });
 const express = require('express');
 const app = express();
 const router = express.Router();
 const dbConnection = require('./config/database/connection');
 const cors = require('cors');
 const passportSetup = require('./config/passport-setup');
-const env = require('./env.js');
 
 const corsOptions = {
-    origin: env.client.appUrl
+    origin: process.env.CLIENT_APP_URL
 };
 
 const authMiddleware = require('./middlewares/authMiddleware');
@@ -27,7 +27,7 @@ app.use('/api/v1', router);
     try {
         console.log('Environment variables are set!');
 
-        const PORT = env.port || 3333;
+        const PORT = process.env.port || 3333;
         await dbConnection.authenticate();
         console.log('MySQL connected!');
 
