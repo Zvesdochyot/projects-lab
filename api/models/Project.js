@@ -33,6 +33,12 @@ Project.init(
             allowNull: false,
             field: 'dashboard_order'
         },
+        backgroundColor: {
+            type: Sequilize.STRING,
+            allowNull: true,
+            defaultValue: 'blue',
+            field: 'background_color'
+        },
         createdAt: {
             type: Sequilize.DATE,
             allowNull: false,

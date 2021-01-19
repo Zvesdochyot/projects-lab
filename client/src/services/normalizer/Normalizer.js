@@ -11,5 +11,6 @@ export const projectMapper = Project => ({
     description: Project.description,
     createdAt: Project.createdAt,
     updatedAt: Project.updatedAt,
-    dashboardOrder: Project.dashboardOrder
+    dashboardOrder: Project.dashboardOrder,
+    backgroundColor: Project.backgroundColor
 });

@@ -1,4 +1,4 @@
-const JWT_SECRET = require('crypto').randomBytes(64).toString('hex');
+const JWT_SECRET = 'f1ad9f5c14df6550f505a7aa7ad25f554824bf3ae2c6ffbf06ee2afe7c06b505fdbb9f56ad8d1254d7ea3c566cbc60754912ea6aed730f76da045b8c499d4839';
 const CLIENT_APP_URL = 'http://localhost:8080';
 
 module.exports = {

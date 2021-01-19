@@ -30,6 +30,11 @@ module.exports = {
                 type: Sequelize.DataTypes.TEXT,
                 allowNull: false
             },
+            background_color: {
+                type: Sequelize.DataTypes.STRING,
+                allowNull: true,
+                defaultValue: 'blue'
+            },
             site_url: {
                 type: Sequelize.DataTypes.STRING,
                 allowNull: true
