@@ -13,7 +13,7 @@ export default {
             required: false
         },
         user: {
-            required: false
+            required: true
         }
     },
     computed: {
