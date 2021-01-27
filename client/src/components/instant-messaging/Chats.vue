@@ -16,12 +16,38 @@ export default {
             {
                 id: 1,
                 name: 'Barak Obama',
-                message: 'Hello! How are u?'
+                message: 'Hello! How are u?',
+                viewed: false
             },
             {
                 id: 2,
-                name: 'Владимир Путин',
-                message: 'Здравствуйте! Как вы?'
+                name: 'User Surname',
+                message: 'Здравствуйте! ddddddddddddddddddddddddddddddddКак вы?',
+                viewed: true
+            },
+            {
+                id: 3,
+                name: 'User Surname',
+                message: 'Здравствуйте! Как вы?',
+                viewed: true
+            },
+            {
+                id: 4,
+                name: 'User Surname',
+                message: 'Здравствуйте! Как вы?',
+                viewed: true
+            },
+            {
+                id: 5,
+                name: 'User Surname',
+                message: 'Здравствуйте! Как вы?',
+                viewed: true
+            },
+            {
+                id: 6,
+                name: 'User Surname',
+                message: 'Здравствуйте! Как вы?',
+                viewed: true
             }
         ]
     })
