@@ -1,14 +1,21 @@
 <template>
-    <div class="avatar-circle d-flex align-center justify-center">
+    <div class="avatar-circle d-flex align-center justify-center"
+         :style="{ width: avatarSize + 'px', height: avatarSize + 'px' }">
         {{ firstLetters }}
     </div>
 </template>
 
 <script>
-import userMixin from "../../../mixins/userMixin";
 export default {
     name: "Avatar",
-    mixins: [userMixin],
+    props: {
+        size: {
+            required: false
+        },
+        user: {
+            required: false
+        }
+    },
     computed: {
         firstLetters() {
             const nameParts = this?.user?.name?.split(' ');
@@ -17,6 +24,9 @@ export default {
                 letters += word.charAt(0)
             });
             return letters;
+        },
+        avatarSize() {
+            return this.size ? this.size : 32;
         }
     }
 }
@@ -24,8 +34,6 @@ export default {
 
 <style scoped>
 .avatar-circle {
-    width: 32px;
-    height: 32px;
     font-weight: bold;
     background: orange;
     color: #fff;

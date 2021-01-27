@@ -7,11 +7,11 @@
         <VCard min-height="400">
             <VCardText>
                 <h3 class="text--primary">
-                    Instant Messaging
+                    Messages
                 </h3>
                 <VDivider />
-                <div class="d-flex align-center justify-center">
-                    <h4>No messages...</h4>
+                <div class="chats px-2">
+                    <Chats />
                 </div>
             </VCardText>
         </VCard>
@@ -19,8 +19,12 @@
 </template>
 
 <script>
+import Chats from "./Chats";
 export default {
-    name: "InstantMessaging"
+    name: "InstantMessaging",
+    components: {
+        Chats
+    }
 }
 </script>
 

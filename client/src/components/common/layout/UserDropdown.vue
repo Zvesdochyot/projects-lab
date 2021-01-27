@@ -3,7 +3,7 @@
         <template v-slot:activator="{ on, attrs }">
             <span v-bind="attrs"
                   v-on="on">
-                <Avatar />
+                <Avatar :user="user"/>
             </span>
         </template>
         <VCard>
