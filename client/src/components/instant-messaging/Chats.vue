@@ -15,39 +15,39 @@ export default {
         chats: [
             {
                 id: 1,
-                name: 'Barak Obama',
+                name: 'John Doe',
                 message: 'Hello! How are u?',
                 viewed: false
             },
             {
                 id: 2,
-                name: 'User Surname',
-                message: 'Здравствуйте! ddddddddddddddddddddddddddddddddКак вы?',
+                name: 'Carl Jhonson',
+                message: 'What\'s up?',
                 viewed: true
             },
             {
                 id: 3,
-                name: 'User Surname',
-                message: 'Здравствуйте! Как вы?',
-                viewed: true
+                name: 'Sweet',
+                message: 'Welcome to us!',
+                viewed: false
             },
             {
                 id: 4,
-                name: 'User Surname',
-                message: 'Здравствуйте! Как вы?',
+                name: 'Man',
+                message: 'How are y?',
                 viewed: true
             },
             {
                 id: 5,
-                name: 'User Surname',
-                message: 'Здравствуйте! Как вы?',
+                name: 'Matt Damn',
+                message: 'I need your help',
                 viewed: true
             },
             {
                 id: 6,
-                name: 'User Surname',
-                message: 'Здравствуйте! Как вы?',
-                viewed: true
+                name: 'Jessica Bum',
+                message: 'Hi, honey:)',
+                viewed: false
             }
         ]
     })
