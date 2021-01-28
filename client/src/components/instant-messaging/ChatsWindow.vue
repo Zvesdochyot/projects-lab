@@ -1,6 +1,6 @@
 <template>
     <div>
-        <ChatBlock v-for="user in chats" :user-data="user" :key="user.id"/>
+        <ChatBlock v-for="user in chats" :user-data="user" :key="user.id" @go-to-chat="goToChat"/>
     </div>
 </template>
 
@@ -50,7 +50,12 @@ export default {
                 viewed: false
             }
         ]
-    })
+    }),
+    methods: {
+        goToChat(value) {
+            this.$emit('go-to-chat', value);
+        }
+    }
 }
 </script>
 

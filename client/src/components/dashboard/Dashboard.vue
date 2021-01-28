@@ -41,7 +41,7 @@ import InstantMessaging from "../instant-messaging/InstantMessaging";
 import { mapActions, mapGetters } from 'vuex';
 import * as actions from '../../store/modules/project/types/actions';
 import * as getters from '../../store/modules/project/types/getters';
-import ProjectCard from "./ProjectCard";
+import ProjectCard from "../projects/ProjectCard";
 export default {
     name: "Dashboard",
     components: {

@@ -5,21 +5,40 @@
             <span class="d-inline-block ml-3">Inbox</span>
         </h3>
         <VCard min-height="400" class="messages-block">
-            <VCardText>
-                <div class="chats px-2">
-                    <Chats />
-                </div>
-            </VCardText>
+            <div class="chats px-2">
+                <VWindow v-model="window" touchless>
+                    <VWindowItem :value="0">
+                        <ChatsWindow @go-to-chat="goToChat"/>
+                    </VWindowItem>
+                    <VWindowItem :value="1">
+                        <Chat @back-to-chats="backToChats"/>
+                    </VWindowItem>
+                </VWindow>
+            </div>
         </VCard>
     </div>
 </template>
 
 <script>
-import Chats from "./Chats";
+import ChatsWindow from "./ChatsWindow";
+import Chat from "./Chat";
 export default {
     name: "InstantMessaging",
     components: {
-        Chats
+        ChatsWindow,
+        Chat
+    },
+    data: () => ({
+        window: 0
+    }),
+    methods: {
+        goToChat(value) {
+            this.window = 1;
+            console.log(value);
+        },
+        backToChats() {
+            this.window = 0;
+        }
     }
 }
 </script>
