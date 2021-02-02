@@ -14,6 +14,10 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(express.json());
 
+app.get('/api-test', (req, res) => {
+    res.status(200).json('API IS WORKING');
+});
+
 app.use('/api/v1', require('./routes'));
 app.use(errorHandler);
 (async () => {

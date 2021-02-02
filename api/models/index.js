@@ -1,5 +1,6 @@
 const User = require('./User');
 const Project = require('./Project');
+const Chat = require('./Chat');
 
 User.hasMany(Project);
 
@@ -11,5 +12,6 @@ Project.belongsTo(User, {
 
 module.exports = {
     User,
-    Project
+    Project,
+    Chat
 };
