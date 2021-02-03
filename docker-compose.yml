@@ -13,8 +13,8 @@ services:
     build: ./api/
     ports:
       - 8000:4444
-    env_file:
-      - ./api/.env.docker
+    environment:
+      NODE_ENV: "docker"
 
   adminer:
     image: adminer:latest
