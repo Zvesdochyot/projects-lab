@@ -23,7 +23,7 @@ app.use(errorHandler);
 
 (async () => {
     try {
-        const PORT = process.env.port || 3333;
+        const PORT = process.env.PORT || 4444;
         await dbConnection.authenticate();
         console.log('MySQL connected!');
 
