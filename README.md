@@ -1,5 +1,7 @@
 ## Projects Lab
 
+![Travis Badge](https://api.travis-ci.com/dmitriy-uvin/projects-lab.svg?token=XwsxdNxj9UKebwsDJZgd&branch=master)
+
 That project has microservice architecture, so installation of each service described in each dir.
 
 ```
