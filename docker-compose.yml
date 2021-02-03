@@ -4,17 +4,19 @@ services:
     image: mysql:latest
     restart: always
     environment:
-      MYSQL_DATABASE: projects-lab
-      MYSQL_USER: admin
-      MYSQL_PASSWORD: password
-      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: projects-lab-docker
+      MYSQL_USER: admin-docker
+      MYSQL_PASSWORD: password-docker
+      MYSQL_ROOT_PASSWORD: root-password-docker
 
   api:
-    build: ./api/
+    build:
+      context: api
+      dockerfile: .deploy/Dockerfile
     ports:
       - 8000:4444
     environment:
-      NODE_ENV: "docker"
+      NODE_ENV: docker
 
   adminer:
     image: adminer:latest
@@ -23,9 +25,12 @@ services:
     - 8888:8080
 
   client:
-    build: ./client/
-    network_mode: host
-    env_file:
-      - ./client/.env.docker
+    build:
+      context: client
+      dockerfile: .deploy/Dockerfile
     volumes:
     - .:/app
+    ports:
+    - 7000:80
+    env_file:
+      - ./client/.env.docker

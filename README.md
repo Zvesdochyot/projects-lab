@@ -27,4 +27,4 @@ docker-compose up -d
 ```
 - Server will be available at http://localhost:8000
 - Adminer for DB managing at http://localhost:8888
-- Client at http://localhost:8080
+- Client at http://localhost:7000
