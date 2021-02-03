@@ -1,0 +1,31 @@
+version: "3"
+services:
+  db:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_DATABASE: projects-lab
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: root_password
+
+  api:
+    build: ./api/
+    ports:
+      - 8000:4444
+    env_file:
+      - ./api/.env.docker
+
+  adminer:
+    image: adminer:latest
+    restart: always
+    ports:
+    - 8888:8080
+
+  client:
+    build: ./client/
+    network_mode: host
+    env_file:
+      - ./client/.env.docker
+    volumes:
+    - .:/app
