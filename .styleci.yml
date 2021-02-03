@@ -1,6 +1,5 @@
 tab-width: 4
 use-tabs: false
-print-width: 120
 double-quotes: false
 trailing-commas: es6
 semicolons: true
