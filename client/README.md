@@ -1,21 +1,21 @@
-# Projects Lab - Frontend
+## Projects Lab - Frontend
 
-## Project setup
+#### Installation
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+#### To run in watch mode
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
+#### Compiles and minifies for production
 ```
 npm run build
 ```
 
-### Lints and fixes files
+#### Lints and fixes files
 ```
 npm run lint
 ```
