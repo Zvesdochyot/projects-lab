@@ -4,7 +4,7 @@ const express = require('express');
 const app = express();
 const dbConnection = require('./database/connection');
 const cors = require('cors');
-// const passportSetup = require('./config/passport-setup');
+const passportSetup = require('./config/passport');
 const errorHandler = require('./middlewares/errorHandler');
 
 const corsOptions = {
@@ -17,16 +17,16 @@ app.use(express.json());
 app.use('/api/v1', require('./routes'));
 app.use(errorHandler);
 
-(async () => {
-    try {
-        const PORT = process.env.PORT || 4444;
-        await dbConnection.authenticate();
-        console.log('MySQL connected!');
+const PORT = process.env.PORT || 4444;
 
-        app.listen(PORT, () => {
-            console.log(`Server started, port: ${PORT}`);
-        });
-    } catch (e) {
-         console.log(e);
-    }
-})();
+dbConnection.authenticate()
+    .then(() => {
+        console.log('MySQL connected!');
+    })
+    .catch(error => {
+        console.log(error);
+    });
+
+app.listen(PORT, () => {
+    console.log(`Server started, port: ${PORT}`);
+});
