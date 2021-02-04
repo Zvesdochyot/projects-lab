@@ -43,38 +43,7 @@
 
         <VSpacer />
 
-        <VTooltip bottom>
-            <template v-slot:activator="{ on, attrs }">
-                <VBtn icon dark
-                      v-bind="attrs"
-                      v-on="on"
-                      @click="onSupport"
-                      class="mr-2"
-                >
-                    <VIcon>
-                        mdi-plus
-                    </VIcon>
-                </VBtn>
-            </template>
-            <span>Create</span>
-        </VTooltip>
-
-        <VTooltip bottom>
-            <template v-slot:activator="{ on, attrs }">
-                <VBtn icon dark
-                      v-bind="attrs"
-                      v-on="on"
-                      @click="onSupport"
-                      class="mr-2"
-                >
-                    <VIcon>
-                        mdi-help-circle
-                    </VIcon>
-                </VBtn>
-
-            </template>
-            <span>Support</span>
-        </VTooltip>
+        <CreateDropdown />
 
         <UserDropdown />
     </VAppBar>
@@ -82,12 +51,14 @@
 
 <script>
 import UserDropdown from "./UserDropdown";
+import CreateDropdown from "@/components/common/layout/CreateDropdown";
 import userMixin from "../../../mixins/userMixin";
 export default {
     name: "Header",
     mixins: [userMixin],
     components: {
-        UserDropdown
+        UserDropdown,
+        CreateDropdown
     },
     methods: {
         onSupport() {

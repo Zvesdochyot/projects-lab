@@ -21,7 +21,11 @@
                         <ProjectCard :project="project" />
                     </VCol>
                     <VCol cols="12" md="3">
-                        <VCol cols="12" class="project-block project-block-add pa-0">
+                        <VCol
+                            cols="12"
+                            class="project-block project-block-add pa-0"
+                            @click="createProject"
+                        >
                             <VIcon x-large>mdi-plus</VIcon>
                         </VCol>
                     </VCol>
@@ -58,6 +62,9 @@ export default {
             fetchAllProjects: actions.FETCH_ALL_PROJECTS,
             changeProjectsOrder: actions.CHANGE_PROJECT_POSITION
         }),
+        createProject() {
+            this.$router.push({ name: 'create-project' });
+        },
         async onDragProject(value) {
             if (value.moved.oldIndex !== value.moved.newIndex) {
                 try {

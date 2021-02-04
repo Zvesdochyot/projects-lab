@@ -7,7 +7,6 @@ import SocialAuthCallback from "../components/auth/SocialAuthCallback";
 
 Vue.use(VueRouter);
 
-const prefix = process.env.VUE_APP_NAME + ' | ';
 const routes = [
     {
         component: UserDataProvider,
@@ -17,7 +16,7 @@ const routes = [
                 path: '/sign-in',
                 name: 'sign-in',
                 component: () => import('../views/SignInPage'),
-                meta: { guest: true, title: prefix + 'Sign In' }
+                meta: { guest: true }
             },
             {
                 path: '/sign-up',
@@ -36,6 +35,12 @@ const routes = [
                 name: 'main',
                 component: () => import('../views/MainPage'),
                 meta: { guest: true }
+            },
+            {
+                path: '/create-project',
+                name: 'create-project',
+                component: () => import('../views/CreateProject'),
+                meta: { user: true}
             }
         ]
     },
