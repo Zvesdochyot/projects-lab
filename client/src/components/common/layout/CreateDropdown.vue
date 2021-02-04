@@ -19,12 +19,12 @@
                     </VListItemContent>
                 </VListItem>
                 <VDivider />
-                <VListItem two-line @click="onCreateBoard">
+                <VListItem three-line @click="onCreateProject">
                     <VListItemContent>
                         <VListItemTitle>
-                            <VIcon left>mdi-view-module</VIcon>Board
+                            <VIcon left>mdi-view-module</VIcon>Project
                         </VListItemTitle>
-                        <VListItemSubtitle>A board is a bunch of cards and columns</VListItemSubtitle>
+                        <VListItemSubtitle>A project with boards with targets and all needed information</VListItemSubtitle>
                     </VListItemContent>
                 </VListItem>
                 <VDivider />
@@ -45,8 +45,8 @@
 export default {
     name: "CreateDropdown",
     methods: {
-        onCreateBoard() {
-            console.log('create board');
+        onCreateProject() {
+            this.$router.push({ name: 'create-project' });
         },
         onCreateTeam(){
             console.log('create team');

@@ -45,23 +45,6 @@
 
         <CreateDropdown />
 
-        <VTooltip bottom>
-            <template v-slot:activator="{ on, attrs }">
-                <VBtn icon dark
-                      v-bind="attrs"
-                      v-on="on"
-                      @click="onSupport"
-                      class="mr-2"
-                >
-                    <VIcon>
-                        mdi-help-circle
-                    </VIcon>
-                </VBtn>
-
-            </template>
-            <span>Support</span>
-        </VTooltip>
-
         <UserDropdown />
     </VAppBar>
 </template>
