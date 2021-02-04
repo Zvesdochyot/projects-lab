@@ -4,15 +4,13 @@ module.exports = {
         password: 'password',
         database: 'projects-lab-dev',
         host: 'localhost',
-        dialect: 'mysql',
-        port: 3306
+        dialect: 'mysql'
     },
-    docker: {
-        username: 'admin-docker',
-        password: 'password-docker',
-        database: 'projects-lab-docker',
-        host: 'db',
-        dialect: 'mysql',
-        port: 3306
+    heroku: {
+        username: 'bb911431093b0e',
+        password: '3e7ee74e',
+        database: 'heroku_33bf43fe82bf6ca',
+        host: 'us-cdbr-east-03.cleardb.com',
+        dialect: 'mysql'
     }
 }
