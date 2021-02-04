@@ -17,7 +17,7 @@ app.use(express.json());
 app.use('/api/v1', require('./routes'));
 app.use(errorHandler);
 
-const PORT = process.env.PORT || 4444;
+const PORT = process.env.PORT || 3333;
 
 dbConnection.authenticate()
     .then(() => {
