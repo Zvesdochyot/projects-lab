@@ -8,4 +8,4 @@ RUN cd ./client && npm install && npm run build
 
 RUN npm install
 
-CMD ["node", "server.js"]
+CMD ["node", "app.js"]
