@@ -1,4 +1,5 @@
-require('dotenv').config({ path: './.env' });
+const envFile = process.env.NODE_ENV === 'development' ? './.env' : './.env.prod';
+require('dotenv').config({ path: envFile });
 
 const express = require('express');
 const app = express();
