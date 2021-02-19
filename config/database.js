@@ -6,10 +6,10 @@ module.exports = {
         host: 'localhost',
         dialect: 'mysql'
     },
-    heroku: {
-        username: 'bb911431093b0e',
-        password: '3e7ee74e',
-        database: 'heroku_33bf43fe82bf6ca',
+    prod: {
+        username: 'b5f564213df054',
+        password: '0783b9d6',
+        database: 'heroku_df8ec009f851f69',
         host: 'us-cdbr-east-03.cleardb.com',
         dialect: 'mysql'
     }
