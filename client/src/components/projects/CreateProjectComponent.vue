@@ -6,7 +6,6 @@
         <VDivider />
         <VRow>
             <VCol md="3">
-
                 <ProjectMockUp :name="name" :color="color" />
             </VCol>
             <VCol md="9">
@@ -22,7 +21,7 @@
                     v-model="name"
                 />
             </VCol>
-            <VCol md="4">
+            <VCol md="2">
                 <VMenu
                     ref="menuStart"
                     v-model="menuStart"
@@ -66,7 +65,7 @@
                     </VDatePicker>
                 </VMenu>
             </VCol>
-            <VCol md="4">
+            <VCol md="2">
                 <VMenu
                     ref="menuEnd"
                     v-model="menuEnd"
@@ -112,7 +111,27 @@
             </VCol>
         </VRow>
         <VRow>
-
+            <VCol cols="8">
+                <VTextarea
+                    rows="5"
+                    outlined
+                    label="Опис проекту"
+                    no-resize
+                    v-model="description"
+                ></VTextarea>
+            </VCol>
+        </VRow>
+        <VRow class="align-center justify-center">
+            <VCol cols="2">
+                <VBtn
+                    color="green"
+                    block
+                    depressed
+                    dark
+                    @click="onCreateProject"
+                >
+                    Створити</VBtn>
+            </VCol>
         </VRow>
     </VContainer>
 </template>
@@ -121,6 +140,8 @@
 import ProjectMockUp from "@/components/projects/ProjectMockUp";
 import Colors from "@/components/colors/Colors";
 import EventBus from "@/events/event-bus";
+import projectService from "@/services/project/projectService";
+
 export default {
     name: "CreateProjectComponent",
     components: {
@@ -129,6 +150,7 @@ export default {
     },
     data: () => ({
         name: '',
+        description: '',
         color: '',
         startDate: '',
         endDate: '',
@@ -138,6 +160,17 @@ export default {
     methods: {
         updateProjectColor(newColor) {
             this.color = newColor;
+        },
+        async onCreateProject() {
+            try {
+                await projectService.createProject({
+                    name: this.name,
+                    description: this.description
+                });
+                this.name = this.description = '';
+            } catch (error) {
+                console.log(error);
+            }
         }
     },
     created() {

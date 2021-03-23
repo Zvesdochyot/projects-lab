@@ -1,4 +1,4 @@
-const envFile = process.env.NODE_ENV === 'development' ? './.env' : './.env.prod';
+const envFile = './.env';
 require('dotenv').config({ path: envFile });
 
 const express = require('express');
@@ -25,7 +25,7 @@ const path = require('path');
 app.use(express.static(path.join(__dirname, "../client/dist")));
 
 app.get("*", (req, res)=>{
-    res.sendFile(path.join(__dirname, "../client/dist", 'index.html'));
+    res.sendFile(path.join(__dirname, "client/dist", 'index.html'));
 });
 
 dbConnection.authenticate()

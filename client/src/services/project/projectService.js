@@ -8,5 +8,8 @@ export default {
     async changeOrder(projectData) {
         const response = await requestService.put('/projects/change-order', projectData);
         return response?.data;
+    },
+    async createProject(payload) {
+        return await requestService.post('/projects', payload);
     }
 }
