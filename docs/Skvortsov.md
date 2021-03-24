@@ -119,16 +119,16 @@ ProjectsLab - це сервіс, який допоможе Вам у розро�
 
 # Аналіз use cases.
 
-***ID:*** UC_AR_2<br>
-***Назва:*** Видалення артефакту<br>
+***ID:*** UC_AR_3<br>
+***Назва:*** Редагування артефакту<br>
 ***Учасники:*** Користувач, Система<br>
 ***Передумови:*** Існуючий артефакт<br>
-***Результат:*** Видалений артефакт<br>
+***Результат:*** Відредагований артефакт<br>
 ***Виключні ситуації:***<br>
-- EX_AR_2.1 Недостатьно прав доступу<br>
+- EX_AR_3.1 Недостатьно прав доступу<br>
 ***Основний сценарій***<br>
 
-![UC_AR_2](http://www.plantuml.com/plantuml/png/ZLD36Xn16DttAVvliXtlObyWczZMU5QnRLi76BPrXLStocjtdDeK7XkbRHYE3Wv6uxDdD4qupkCj0dKPbhgYhgfhc6EgRfqdb8oOdEzM2JuGlngnuN3rNE1ZAbpx2132KTVsT8Gc5fQOmeLEm5UFXDpBrEdgEe-TA6br6lybYIRJm_HyEUeJ0ZhfiJ2EyX0ajke-RNNPqy5SlKp21QOWv6v9TgmYrSZouP7y7xKmNPqt-Clh-TiBARyBgU1fdcb5jCg_7pjNg4Uq-xbXqQ_J7HsLmSdZ9qQoujYnWnmvjERGEi5x132YNCmH_01jtR5_uxRzxNehFptQEHBx_TylqUsjrk9jadwiI-KWn_4OVbp_PVnURd5dmHQ4aIcF2DMJTalefDqdn3HTtOGU7_bCVObvlN3yWA_uXc_2OfzmKuXwTToiumjNJcnxHTsFLbYK7fLiApAgjPljffO-PjPMsy1DV0k-0m00)
+![UC_AR_3](http://www.plantuml.com/plantuml/png/ZLD55Y9H3DptAVAOBSvgt2ymct5tmrcDkxkx7G1tQAvG_qPJFutxnv8VgQAITdPaiYVJsTpLAuxZ2CzrV8LhRgDXxfYxvXvAA9X7rndoZcOFlKs27upVjTbeqNelwA8WjBjmqKFBt3iI5xQhee82obv31hlcbJ3_DckhvZwlMXPjSv_27m-ULHqKhe_3_OBB3bKjLBWEN6tTDi_PjYf7uYYPZnu1OQHDe0NuP3PD0ONDGxHrv22ZjuAwnIT4pO9guaTH5XMnsg1dxX5i5ck2c7a_u5wXS6xVwhAy8rINL_nsKUIditd912R45nz-iiJw9QOmpRTQuq-ieCB4BtiDw-ZG8PM58xCddiYUbVJ5ynUoik7SkPCymz2MKzi4tqcYHfqQfE9EXFOUEBvpt_5OC3AyFHi_e_sMZdwa4YMn0nZEbOhVvlWfwXsQ7yrZHgeBrc3pUckVI6vsrFN-uRa4sQM7SRn6LvVmeuxYaSwjgHILBqD1Ju4AEN1N6R9qp4EbHEPsQL0AZZh-m5_ympyXiLzuA8nsWdWOn1_TRhObq-VMGdbCJcOtRAD0D1mDEtqf1soT7NJqKVyF)
 
 ### Аналіз
 Наведений вище use case є реалізацією одного із запитів осіб, а саме запит на редагування проекту. У ході редагування проекту відбувається обробка нових введених даних, які будуть використовуватися для ідентифікації проекту користувачем та системою, а також обробка можливих виключних ситуацій. У результаті зареєстрований в системі користувач отримує відредагований проект, з яким він та його команда може починати працювати.
