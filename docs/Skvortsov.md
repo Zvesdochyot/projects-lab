@@ -117,18 +117,7 @@ ProjectsLab - це сервіс, який допоможе Вам у розро�
 - Розбиття завдання на декілька підзавдань;
 - Уточнення вимог до завдання
 
-# Аналіз юзкейсів.
-
-***ID:*** UC10 <br>
-***Назва:*** Редагування задачі <br>
-***Учасники:*** Користувач, система<br>
-***Передумови*** Користувач має права доступу до проекту<br>
-***Результат:*** Відредагована задача<br>
-***Виключні ситуації:*** <br>
-- EX10.1 такої задачі не існує <br>
-- EX10.2 дані введені некоректно <br>
-
-![](http://www.plantuml.com/plantuml/png/hLJ5sHmn5Bjl5GuptiBSGuvXPZY5cPavgM0PXrhGwoYI_Vsp3875nv9bUxPVlBJ_mgNBfqyL2ewlg_YCr6wYPRVijjr11ILxS5Kf__B5kPSR6ns-iV2ssj2XzTRnBq6A31sxu-RZ9-geeOIgPePIXoO3DG7OdVcR-gTUnQ_0WNqnIbT7Odv7cLHJb17PSs5gOCQ-suxW9STa7og3YRte8fqvU-cmkt3ywB5BRi6H8_lvobER3snr-8eK3KHeiJdjI-tPksxjwdLvwF2PGtxOW22eKOuM8Y-8tVN2ndQ7F9sdbJ0PIuXCo-ZJeqUEATlIY_c1uzyZiUSJyH2xfRJhpakNehB4NX2x8rCqP3H2GKOpGdtPnXnbbQHLOSbhp3wQmzaMsiIK_5e-saZ6r6HYIVmQGnsdgCTFvdPhT5jl7UswtRUdqazEBM-TWTLG4uMVUWQ7ZrwlskAaiM4hxWmXJD7IsHqaREqm4DbJ9MQJBXkKplaz337oYpHKfyVVbDvsLSJEqtt85T_hEObZe0FRH1KK9_51hqSpgAAGE8bQHiH7UPL2Jjl5J9LcEFjCUsh_xMwk7tytPtdEQOSPPnvn42pJuYcHLXJhJinfxFaFxRSNpzvlwdbodZstgL3OJZfwsFu6)
+# Аналіз use cases.
 
 ***ID:*** UC_AR_2<br>
 ***Назва:*** Видалення артефакту<br>
@@ -140,6 +129,23 @@ ProjectsLab - це сервіс, який допоможе Вам у розро�
 ***Основний сценарій***<br>
 
 ![UC_AR_2](http://www.plantuml.com/plantuml/png/ZLD36Xn16DttAVvliXtlObyWczZMU5QnRLi76BPrXLStocjtdDeK7XkbRHYE3Wv6uxDdD4qupkCj0dKPbhgYhgfhc6EgRfqdb8oOdEzM2JuGlngnuN3rNE1ZAbpx2132KTVsT8Gc5fQOmeLEm5UFXDpBrEdgEe-TA6br6lybYIRJm_HyEUeJ0ZhfiJ2EyX0ajke-RNNPqy5SlKp21QOWv6v9TgmYrSZouP7y7xKmNPqt-Clh-TiBARyBgU1fdcb5jCg_7pjNg4Uq-xbXqQ_J7HsLmSdZ9qQoujYnWnmvjERGEi5x132YNCmH_01jtR5_uxRzxNehFptQEHBx_TylqUsjrk9jadwiI-KWn_4OVbp_PVnURd5dmHQ4aIcF2DMJTalefDqdn3HTtOGU7_bCVObvlN3yWA_uXc_2OfzmKuXwTToiumjNJcnxHTsFLbYK7fLiApAgjPljffO-PjPMsy1DV0k-0m00)
+
+### Аналіз
+Наведений вище use case є реалізацією одного із запитів осіб, а саме запит на редагування проекту. У ході редагування проекту відбувається обробка нових введених даних, які будуть використовуватися для ідентифікації проекту користувачем та системою, а також обробка можливих виключних ситуацій. У результаті зареєстрований в системі користувач отримує відредагований проект, з яким він та його команда може починати працювати.
+
+***ID:*** UC_AR_2<br>
+***Назва:*** Видалення артефакту<br>
+***Учасники:*** Користувач, Система<br>
+***Передумови:*** Існуючий артефакт<br>
+***Результат:*** Видалений артефакт<br>
+***Виключні ситуації:***<br>
+- EX_AR_2.1 Недостатьно прав доступу<br>
+***Основний сценарій***<br>
+
+![UC_AR_2](http://www.plantuml.com/plantuml/png/ZLD36Xn16DttAVvliXtlObyWczZMU5QnRLi76BPrXLStocjtdDeK7XkbRHYE3Wv6uxDdD4qupkCj0dKPbhgYhgfhc6EgRfqdb8oOdEzM2JuGlngnuN3rNE1ZAbpx2132KTVsT8Gc5fQOmeLEm5UFXDpBrEdgEe-TA6br6lybYIRJm_HyEUeJ0ZhfiJ2EyX0ajke-RNNPqy5SlKp21QOWv6v9TgmYrSZouP7y7xKmNPqt-Clh-TiBARyBgU1fdcb5jCg_7pjNg4Uq-xbXqQ_J7HsLmSdZ9qQoujYnWnmvjERGEi5x132YNCmH_01jtR5_uxRzxNehFptQEHBx_TylqUsjrk9jadwiI-KWn_4OVbp_PVnURd5dmHQ4aIcF2DMJTalefDqdn3HTtOGU7_bCVObvlN3yWA_uXc_2OfzmKuXwTToiumjNJcnxHTsFLbYK7fLiApAgjPljffO-PjPMsy1DV0k-0m00)
+
+### Аналіз
+Наведений вище use case є реалізацією одного із завитів осіб, а саме на видалення проекту. У ході видалення проекту видаляються всі дані по проекту, а також обробляються виключні ситуації. У результаті зареєстрований у системі користувач видаляє проект.
 
 # Проектування бази даних.
 
