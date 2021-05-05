@@ -1,6 +1,21 @@
 const Sequilize = require('sequelize');
 
 const Model = Sequilize.Model;
+
+/**
+ * A class for managing projects. Represents table in a database, using Sequelize API.
+ * @category Models
+ * @class
+ * @extends Sequilize.Model
+ * @property {!number} id - Primary auto-increment key to use by the database
+ * @property {!number} userId - Unique identifier of the user who created the project
+ * @property {!string} name - Project name
+ * @property {?string} description - Project description (optional)
+ * @property {!string} dashboardOrder - Order of the project on the dashboard
+ * @property {?string} backgroundColor - Project label color (optional)
+ * @property {!Date} createdAt - Project creation date
+ * @property {?Date} updatedAt - Date of project information update (optional)
+ */
 class Project extends Model {}
 Project.init(
     {
