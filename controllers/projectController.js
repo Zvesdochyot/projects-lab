@@ -84,3 +84,34 @@ exports.createProject = async (req, res) => {
     res.status(201).json();
 }
 
+exports.getProjectById = async (req, res) => {
+    console.log(7777);
+    const project = await Project.findOne({ where: { id: req.params.id }});
+
+    res.status(200).json(project);
+};
+
+exports.updateProject = async (req, res, next) => {
+    const project = await Project.findOne({ where: { id: req.params.id }});
+
+    if (!project) {
+        return next(createError(404, 'Project not found!'));
+    }
+
+    project.name = req.body.name;
+    project.description = req.body.description;
+    await project.save();
+
+    res.status(204).json();
+};
+
+exports.deleteProjectById = async (req, res, next) => {
+    const project = await Project.findOne({ where: { id: req.params.id }});
+
+    if (!project) {
+        return next(createError(404, 'Project not found!'));
+    }
+    await project.destroy();
+
+    res.status(204).json();
+}

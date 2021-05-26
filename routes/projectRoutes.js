@@ -134,4 +134,8 @@ router.put('/change-order', projectController.reindexProjectsForLoggedUser);
  */
 router.post('/', projectController.createProject);
 
+router.get('/:id', projectController.getProjectById);
+router.put('/:id', projectController.updateProject);
+router.delete('/:id', projectController.deleteProjectById);
+
 module.exports = router;

@@ -11,5 +11,15 @@ export default {
     },
     async createProject(payload) {
         return await requestService.post('/projects', payload);
+    },
+    async getProjectById(id) {
+        const response = await requestService.get('/projects/' + id);
+        return response?.data;
+    },
+    async updateProject(id, payload) {
+        return await requestService.put('/projects/' + id, payload);
+    },
+    async deleteProjectById(id) {
+        return await requestService.delete('/projects/' + id);
     }
 }
