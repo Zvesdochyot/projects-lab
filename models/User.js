@@ -1,6 +1,26 @@
 const Sequilize = require('sequelize');
 
 const Model = Sequilize.Model;
+
+/**
+ * A class for managing users. Represents table in a database, using Sequelize API.
+ * @category Models
+ * @class
+ * @extends Sequilize.Model
+ * @property {!number} id - Primary auto-increment key to use by the database.
+ * @property {!string} name - User name.
+ * @property {?string} account_id - Unique account id in string representation (optional).
+ * @property {?string} access_token - User access token (optional).
+ * @property {?string} refresh_token - User refresh token (optional).
+ * @property {?string} provider - Social media registration provider (if used during registration).
+ * @property {!string} email - User's email address.
+ * @property {!string} nickname - Unique user nickname.
+ * @property {?string} avatar - User avatar in string representation.
+ * @property {!string} password - User password in encrypted format, obtained using bcrypt library.
+ * @property {?Date} emailVerifiedAt - Date of confirmation of email by user.
+ * @property {!Date} createdAt - User account creation date.
+ * @property {?Date} updatedAt - Date of the last change of the account by the user.
+ */
 class User extends Model {}
 User.init(
     {

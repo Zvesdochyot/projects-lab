@@ -2,7 +2,8 @@ import axios from 'axios';
 import authService from './auth/authService';
 import router from '../router';
 
-const API_ENDPOINT = process.env.VUE_APP_API_URL;
+// const API_ENDPOINT = process.env.VUE_APP_API_URb;
+const API_ENDPOINT = 'http://localhost:3333/api/v1';
 
 axios.interceptors.request.use(
     config => {

@@ -1,8 +1,8 @@
 module.exports = {
     development: {
-        username: 'admin',
-        password: 'password',
-        database: 'projects-lab-dev',
+        username: 'root',
+        password: 'projectslab',
+        database: 'projects_lab',
         host: 'localhost',
         dialect: 'mysql'
     },

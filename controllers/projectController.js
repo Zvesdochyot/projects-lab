@@ -105,7 +105,7 @@ exports.updateProject = async (req, res, next) => {
     res.status(204).json();
 };
 
-exports.deleteById = async (req, res, next) => {
+exports.deleteProjectById = async (req, res, next) => {
     const project = await Project.findOne({ where: { id: req.params.id }});
 
     if (!project) {

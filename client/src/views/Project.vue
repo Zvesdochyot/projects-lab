@@ -32,13 +32,15 @@
                                           v-on="on"
                                           color="red"
                                           dark d-block
-                                    >Видалити</VBtn>
+                                    >Видалити
+                                    </VBtn>
                                 </template>
                                 <v-card>
                                     <v-card-title class="headline">
                                         Use Google's location service?
                                     </v-card-title>
-                                    <v-card-text>Let Google help apps determine location. This means sending anonymous location data to Google, even when no apps are running.</v-card-text>
+                                    <v-card-text>Let Google help apps determine location. This means sending anonymous
+                                        location data to Google, even when no apps are running.
                                     <v-card-actions>
                                         <v-spacer></v-spacer>
                                         <VBtn
@@ -84,16 +86,16 @@ export default {
         dialog: false
     }),
     methods: {
-          async onUpdateProject() {
-              try {
-                  await projectService.updateProject(this.$route.params.id, {
-                      name: this.name,
-                      description: this.description
-                  });
-              } catch (e) {
-                  console.log(e);
-              }
-          },
+        async onUpdateProject() {
+            try {
+                await projectService.updateProject(this.$route.params.id, {
+                    name: this.name,
+                    description: this.description
+                });
+            } catch (e) {
+                console.log(e);
+            }
+        },
         async onDeleteProject() {
             try {
                 await projectService.deleteProjectById(this.$route.params.id);
@@ -117,5 +119,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>

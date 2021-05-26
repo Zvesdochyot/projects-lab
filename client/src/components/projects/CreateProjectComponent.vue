@@ -6,7 +6,6 @@
         <VDivider />
         <VRow>
             <VCol md="3">
-
                 <ProjectMockUp :name="name" :color="color" />
             </VCol>
             <VCol md="9">
@@ -22,7 +21,7 @@
                     v-model="name"
                 />
             </VCol>
-            <VCol md="4">
+            <VCol md="2">
                 <VMenu
                     ref="menuStart"
                     v-model="menuStart"
@@ -66,7 +65,7 @@
                     </VDatePicker>
                 </VMenu>
             </VCol>
-            <VCol md="4">
+            <VCol md="2">
                 <VMenu
                     ref="menuEnd"
                     v-model="menuEnd"
@@ -112,7 +111,7 @@
             </VCol>
         </VRow>
         <VRow>
-            <VCol cols="6">
+            <VCol cols="8">
                 <VTextarea
                     rows="5"
                     outlined
@@ -151,6 +150,7 @@ export default {
     },
     data: () => ({
         name: '',
+        description: '',
         color: '',
         startDate: '',
         endDate: '',
