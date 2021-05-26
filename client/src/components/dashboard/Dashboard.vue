@@ -17,7 +17,10 @@
                         @start="drag=true"
                         @end="drag=false"
                 >
-                    <VCol cols="12" md="3" v-for="project in projects" :key="project.id">
+                    <VCol cols="12" md="3"
+                          v-for="project in projects" :key="project.id"
+                          @click="goToProject(project.id)"
+                    >
                         <ProjectCard :project="project" />
                     </VCol>
                     <VCol cols="12" md="3">
@@ -78,6 +81,9 @@ export default {
                     console.log(error);
                 }
             }
+        },
+        goToProject(id) {
+            this.$router.push('/projects/' + id);
         }
     },
     computed: {

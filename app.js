@@ -1,5 +1,5 @@
-const envFile = './.env';
-require('dotenv').config({path: envFile});
+const envFile = './.env'
+require('dotenv').config({ path: envFile });
 
 const express = require('express');
 
@@ -28,7 +28,7 @@ const path = require('path');
 
 app.use(express.static(path.join(__dirname, "../client/dist")));
 
-app.get("*", (req, res) => {
+app.get("*", (req, res)=>{
     res.sendFile(path.join(__dirname, "client/dist", 'index.html'));
 });
 

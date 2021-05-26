@@ -41,6 +41,12 @@ const routes = [
                 name: 'create-project',
                 component: () => import('../views/CreateProject'),
                 meta: { user: true}
+            },
+            {
+                path: '/projects/:id',
+                name: 'project-id',
+                component: () => import('../views/Project'),
+                meta: { user: true }
             }
         ]
     },
