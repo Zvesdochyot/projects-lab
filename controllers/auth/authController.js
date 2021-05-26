@@ -5,7 +5,7 @@ const mailer = require('../../mail/mailer');
 const createError = require('http-errors');
 
 exports.login = async (req, res, next) => {
-    const user = await User.findOne({ where: { email: req.body.email }});
+    const user = await User.findOne({where: {email: req.body.email}});
 
     if (!user) {
         return next(createError(404, 'User with such email not found!'));
@@ -18,9 +18,9 @@ exports.login = async (req, res, next) => {
     }
 
     const token = jwt.sign(
-        { user },
+        {user},
         process.env.JWT_SECRET_KEY,
-        { expiresIn: 3600 });
+        {expiresIn: 3600});
 
     res.status(200).json({
         accessToken: token
@@ -28,13 +28,13 @@ exports.login = async (req, res, next) => {
 };
 
 exports.register = async (req, res, next) => {
-    let user = await User.findOne({ where: { email: req.body.email }});
+    let user = await User.findOne({where: {email: req.body.email}});
 
     if (user) {
         return next(createError(400, 'User with such email already exists!'));
     }
 
-    user = await User.findOne({ where: { nickname: req.body.nickname }});
+    user = await User.findOne({where: {nickname: req.body.nickname}});
 
     if (user) {
         return next(createError(400, 'User with such nickname already exists!'));

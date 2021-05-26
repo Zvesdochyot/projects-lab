@@ -1,0 +1,215 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> models/User.js</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    API Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"></div><div class="category"><h2>Mailer</h2><h3>Classes</h3><ul><li><a href="MailGunMailer.html">MailGunMailer</a></li></ul></div><div class="category"><h2>Models</h2><h3>Classes</h3><ul><li><a href="Chat.html">Chat</a></li><li><a href="Project.html">Project</a></li><li><a href="User.html">User</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Source</p>
+                    <h1>models/User.js</h1>
+                </header>
+                
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>const Sequilize = require('sequelize');
+
+const Model = Sequilize.Model;
+
+/**
+ * A class for managing users. Represents table in a database, using Sequelize API.
+ * @category Models
+ * @class
+ * @extends Sequilize.Model
+ * @property {!number} id - Primary auto-increment key to use by the database
+ * @property {!string} name - User name
+ * @property {?string} account_id - Unique account id in string representation (optional)
+ * @property {?string} access_token - User access token (optional)
+ * @property {?string} refresh_token - User refresh token (optional)
+ * @property {?string} provider - Social media registration provider (if used during registration)
+ * @property {!string} email - User's email address
+ * @property {!string} nickname - Unique user nickname
+ * @property {?string} avatar - User avatar in string representation
+ * @property {!string} password - User password in encrypted format, obtained using bcrypt library
+ * @property {?Date} emailVerifiedAt - Date of confirmation of email by user
+ * @property {!Date} createdAt - User account creation date
+ * @property {?Date} updatedAt - Date of the last change of the account by the user
+ */
+class User extends Model {}
+User.init(
+    {
+        id: {
+            type: Sequilize.INTEGER,
+            primaryKey: true,
+            autoIncrement: true
+        },
+        name: {
+            type: Sequilize.STRING,
+            allowNull: false
+        },
+        account_id: {
+            type: Sequilize.STRING,
+            unique: true,
+            allowNull: true,
+        },
+        access_token: {
+            type: Sequilize.TEXT,
+            unique: false,
+            allowNull: true,
+        },
+        refresh_token: {
+            type: Sequilize.TEXT,
+            unique: false,
+            allowNull: true,
+        },
+        provider: {
+            type: Sequilize.STRING,
+            unique: false,
+            allowNull: true
+        },
+        email: {
+            type: Sequilize.STRING,
+            allowNull: false,
+            unique: true
+        },
+        nickname: {
+            type: Sequilize.STRING,
+            allowNull: false,
+            unique: true
+        },
+        avatar: {
+            type: Sequilize.STRING,
+            allowNull: true
+        },
+        password: {
+            type: Sequilize.STRING,
+            allowNull: false,
+        },
+        emailVerifiedAt: {
+            type: Sequilize.DATE,
+            allowNull: true,
+            field: 'email_verified_at'
+        },
+        createdAt: {
+            type: Sequilize.DATE,
+            allowNull: false,
+            defaultValue: Date.now(),
+            field: 'created_at'
+        },
+        updatedAt: {
+            type: Sequilize.DATE,
+            allowNull: true,
+            default: null,
+            field: 'updated_at'
+        }
+    },
+    {
+        sequelize: require('../database/connection'),
+        modelName: 'user',
+        tableName: 'users',
+        timestamps: false
+    }
+);
+
+module.exports = User;</code></pre>
+        </article>
+    </section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by 
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+</body>
+</html>
