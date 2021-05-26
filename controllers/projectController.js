@@ -1,7 +1,7 @@
 const models = require('../models');
 const Project = models.Project;
 const { Op } = require('sequelize');
-const createError = require('http-errors')
+const createError = require('http-errors');
 
 exports.getProjectsForLoggedUser = async (req, res) => {
     const projectsCollection = await Project.findAll({
@@ -78,11 +78,11 @@ exports.createProject = async (req, res) => {
         dashboardOrder: 4,
         name: projectName,
         description: projectDescription
-    })
+    });
     await project.save();
 
     res.status(201).json();
-}
+};
 
 exports.getProjectById = async (req, res) => {
     console.log(7777);

@@ -1,5 +1,5 @@
 const envFile = './.env';
-require('dotenv').config({path: envFile});
+require('dotenv').config({ path: envFile });
 
 const express = require('express');
 const app = express();
@@ -48,7 +48,6 @@ app.use(express.static(path.join(__dirname, '../client/dist')));
 
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'client/dist', 'index.html'));
-});
 
 dbConnection.authenticate()
     .then(() => {
