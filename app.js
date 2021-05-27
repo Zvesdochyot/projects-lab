@@ -53,8 +53,6 @@ app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'client/dist', 'index.html'));
 });
 
-});
-
 dbConnection.authenticate()
     .then(() => {
         console.log('MySQL connected!');
