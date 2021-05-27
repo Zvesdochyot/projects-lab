@@ -155,8 +155,7 @@ export default {
         startDate: '',
         endDate: '',
         menuStart: false,
-        menuEnd: false,
-        description: ''
+        menuEnd: false
     }),
     methods: {
         updateProjectColor(newColor) {

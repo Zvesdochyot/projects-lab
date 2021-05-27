@@ -85,7 +85,6 @@ exports.createProject = async (req, res) => {
 };
 
 exports.getProjectById = async (req, res) => {
-    console.log(7777);
     const project = await Project.findOne({ where: { id: req.params.id }});
 
     res.status(200).json(project);
