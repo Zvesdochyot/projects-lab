@@ -3,7 +3,7 @@
         <VContainer>
             <VRow>
                 <VCol :cols="clicked ? 9 : 12">
-                    <VBtn @click="clicked = !clicked">Редактировать</VBtn>
+                    <VBtn @click="clicked = !clicked">Редагувати</VBtn>
                 </VCol>
                 <VCol cols="3" v-if="clicked">
                     <VRow>
@@ -21,7 +21,7 @@
                     </VRow>
                     <VRow class="align-center justify-center">
                         <VCol cols="2">
-                            <VBtn color="orange" dark d-block @click="onUpdateProject" class="mb-5">Обновити</VBtn>
+                            <VBtn color="orange" dark d-block @click="onUpdateProject" class="mb-5">Оновити</VBtn>
                             <v-dialog
                                 v-model="dialog"
                                 persistent
