@@ -47,8 +47,6 @@ const projectController = require('../controllers/projectController');
  *   responses:
  *     UnauthorizedError:
  *       description: Access token is missing or invalid.
- * security:
- *   - bearerAuth: []
  * tags:
  *   name: Projects
  *   description: The project management API.
@@ -60,6 +58,8 @@ const projectController = require('../controllers/projectController');
  *   get:
  *     summary: Returns an array of all projects of the authorized user
  *     tags: [Projects]
+ *     security:
+ *       - bearerAuth: []
  *     responses:
  *       '200':
  *         description: An array of all user projects was successfully retrieved.
@@ -81,6 +81,8 @@ router.get('/', projectController.getProjectsForLoggedUser);
  *   put:
  *     summary: Changes the order of the specific project in the user's dashboard
  *     tags: [Projects]
+ *     security:
+ *       - bearerAuth: []
  *     requestBody:
  *       description: The project for which you need to change the order in the dashboard.
  *       required: true
@@ -105,17 +107,15 @@ router.get('/', projectController.getProjectsForLoggedUser);
  *         $ref: '#/components/responses/UnauthorizedError'
  */
 router.put('/change-order', projectController.reindexProjectsForLoggedUser);
-router.post('/', projectController.createProject);
-router.get('/:id', projectController.getProjectById);
-router.put('/:id', projectController.updateProject);
-router.delete('/:id', projectController.deleteById);
 
 /**
  * @swagger
  * /api/v1/projects/:
  *   post:
- *     summary: Creates a new project owned by an authorized user
+ *     summary: Creates a new project owned by the authorized user
  *     tags: [Projects]
+ *     security:
+ *       - bearerAuth: []
  *     requestBody:
  *       description: The project to be created.
  *       required: true
@@ -138,8 +138,95 @@ router.delete('/:id', projectController.deleteById);
  */
 router.post('/', projectController.createProject);
 
+/**
+ * @swagger
+ * /api/v1/projects/{id}:
+ *   get:
+ *     summary: Returns selected project by the authorized user
+ *     tags: [Projects]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: number
+ *         required: true
+ *         description: The project id.
+ *     responses:
+ *       '200':
+ *         description: The requested user project was successfully retrieved.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Project'
+ *       '401':
+ *         $ref: '#/components/responses/UnauthorizedError'
+ */
 router.get('/:id', projectController.getProjectById);
+
+/**
+ * @swagger
+ * /api/v1/projects/{id}:
+ *   put:
+ *     summary: Changes the data and settings of the selected project
+ *     tags: [Projects]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: number
+ *         required: true
+ *         description: The project id.
+ *     requestBody:
+ *       description: The project to be updated.
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               name:
+ *                 type: string
+ *                 description: The project name.
+ *               description:
+ *                 type: string
+ *                 description: The project description.
+ *     responses:
+ *       '204':
+ *         description: The project data and settings has been successfully changed.
+ *       '401':
+ *         $ref: '#/components/responses/UnauthorizedError'
+ *       '404':
+ *         description: The required project was not found.
+ */
 router.put('/:id', projectController.updateProject);
+
+/**
+ * @swagger
+ * /api/v1/projects/{id}:
+ *   delete:
+ *     summary: Deletes a project owned by the authorized user
+ *     tags: [Projects]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: number
+ *         required: true
+ *         description: The project id.
+ *     responses:
+ *       '204':
+ *         description: The project was successfully deleted by the owner.
+ *       '401':
+ *         $ref: '#/components/responses/UnauthorizedError'
+ *       '404':
+ *         description: The required project was not found.
+ */
 router.delete('/:id', projectController.deleteProjectById);
 
 module.exports = router;
