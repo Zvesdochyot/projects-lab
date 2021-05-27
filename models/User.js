@@ -17,7 +17,7 @@ const Model = Sequilize.Model;
  * @property {!string} nickname - Unique user nickname.
  * @property {?string} avatar - User avatar in string representation.
  * @property {!string} password - User password in encrypted format, obtained using bcrypt library.
- * @property {?Date} emailVerifiedAt - Date of confirmation of email by user.
+ * @property {?Date} emailVerifiedAt - Date of confirmation of email by the user.
  * @property {!Date} createdAt - User account creation date.
  * @property {?Date} updatedAt - Date of the last change of the account by the user.
  */

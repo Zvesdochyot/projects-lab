@@ -47,8 +47,6 @@ const projectController = require('../controllers/projectController');
  *   responses:
  *     UnauthorizedError:
  *       description: Access token is missing or invalid.
- * security:
- *   - bearerAuth: []
  * tags:
  *   name: Projects
  *   description: The project management API.
@@ -60,6 +58,8 @@ const projectController = require('../controllers/projectController');
  *   get:
  *     summary: Returns an array of all projects of the authorized user
  *     tags: [Projects]
+ *     security:
+ *       - bearerAuth: []
  *     responses:
  *       '200':
  *         description: An array of all user projects was successfully retrieved.
@@ -81,6 +81,8 @@ router.get('/', projectController.getProjectsForLoggedUser);
  *   put:
  *     summary: Changes the order of the specific project in the user's dashboard
  *     tags: [Projects]
+ *     security:
+ *       - bearerAuth: []
  *     requestBody:
  *       description: The project for which you need to change the order in the dashboard.
  *       required: true
@@ -112,6 +114,8 @@ router.put('/change-order', projectController.reindexProjectsForLoggedUser);
  *   post:
  *     summary: Creates a new project owned by the authorized user
  *     tags: [Projects]
+ *     security:
+ *       - bearerAuth: []
  *     requestBody:
  *       description: The project to be created.
  *       required: true
@@ -140,6 +144,8 @@ router.post('/', projectController.createProject);
  *   get:
  *     summary: Returns selected project by the authorized user
  *     tags: [Projects]
+ *     security:
+ *       - bearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -165,6 +171,8 @@ router.get('/:id', projectController.getProjectById);
  *   put:
  *     summary: Changes the data and settings of the selected project
  *     tags: [Projects]
+ *     security:
+ *       - bearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -202,6 +210,8 @@ router.put('/:id', projectController.updateProject);
  *   delete:
  *     summary: Deletes a project owned by the authorized user
  *     tags: [Projects]
+ *     security:
+ *       - bearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
